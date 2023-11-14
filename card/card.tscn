@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mayvnick6y0a"]
+
+[ext_resource type="Script" path="res://card/card.gd" id="1_mi234"]
+
+[node name="Card" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mi234")

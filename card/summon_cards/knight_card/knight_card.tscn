@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0etmnkhcu1cn"]
+
+[ext_resource type="Script" path="res://card/summon_cards/knight_card/knight_card.gd" id="1_2sqhd"]
+[ext_resource type="Texture2D" uid="uid://mc5w0udg2apm" path="res://assets/cards/knight_card.png" id="2_4xhtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2er3"]
+size = Vector2(96, 128)
+
+[node name="KnightCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2sqhd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4xhtd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h2er3")

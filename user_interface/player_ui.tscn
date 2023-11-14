@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnvrm83f3jean"]
+
+[ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
+[ext_resource type="PackedScene" uid="uid://c0etmnkhcu1cn" path="res://card/summon_cards/knight_card/knight_card.tscn" id="2_cf0w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
+size = Vector2(1133, 485)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqhir"]
+radius = 8.06226
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_ar28p")
+
+[node name="Cards" type="Node" parent="."]
+
+[node name="KnightCard" parent="Cards" instance=ExtResource("2_cf0w0")]
+position = Vector2(737, 567)
+
+[node name="PlaceArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceArea"]
+position = Vector2(573.5, 253.5)
+shape = SubResource("RectangleShape2D_06sgl")
+
+[node name="Mouse" type="Area2D" parent="." groups=["mouse"]]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
+shape = SubResource("CircleShape2D_hqhir")
+
+[connection signal="area_entered" from="PlaceArea" to="." method="_on_place_area_area_entered"]
+[connection signal="area_exited" from="PlaceArea" to="." method="_on_place_area_area_exited"]
+[connection signal="area_entered" from="Mouse" to="." method="_on_mouse_area_entered"]
+[connection signal="area_exited" from="Mouse" to="." method="_on_mouse_area_exited"]
