@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Card
 
+@onready var summon_node: Node2D = get_node("/root/GameMap/CardSummons")
+
 var in_placement_area: bool = false
 var in_valid_area: bool = false
 var is_grabbed: bool = false

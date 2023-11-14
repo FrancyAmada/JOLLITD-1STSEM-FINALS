@@ -18,7 +18,7 @@ var grabbed_card: Card = null
 #			card.set_initial_position()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func process(delta):
 	set_mouse_position()
 	
 	if grabbed_card != null:
@@ -27,7 +27,7 @@ func _process(delta):
 	
 #	print_debug("Mouse Position: ", player.get_mouse_position(), " In Game Area: ", mouse_is_in_game_area)
 	
-func _input(event):
+func input(event):
 	if event is InputEventMouseButton:
 #		print_debug("Mouse is at position: ", event.position)
 		if is_on_card != null:

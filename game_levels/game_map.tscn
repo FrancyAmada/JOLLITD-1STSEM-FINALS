@@ -35,5 +35,8 @@ debug_color = Color(0.756863, 0.454902, 0, 0.419608)
 [node name="Player" parent="." instance=ExtResource("4_c5awo")]
 position = Vector2(461, 266)
 
+[node name="CardSummons" type="Node2D" parent="."]
+y_sort_enabled = true
+
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]

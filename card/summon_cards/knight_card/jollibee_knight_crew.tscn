@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://b18igqp7yxl44"]
+
+[ext_resource type="PackedScene" uid="uid://dra57ml8bbeho" path="res://card/summon_cards/summon.tscn" id="1_rukes"]
+[ext_resource type="Texture2D" uid="uid://mt3ipe1dk6c3" path="res://assets/jollibee/knight_crew/Jollibee-knight_crew_idle.png" id="2_5npww"]
+[ext_resource type="Script" path="res://card/summon_cards/knight_card/jollibee_knight_crew.gd" id="2_e642y"]
+[ext_resource type="PackedScene" uid="uid://ba2mdypfi1l0u" path="res://components/character_components/animation_component.tscn" id="3_j5e1q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q6656"]
+
+[sub_resource type="Animation" id="Animation_s0gdk"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5npww")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_y3i8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uf1yu"]
+_data = {
+"Idle": SubResource("Animation_s0gdk"),
+"RESET": SubResource("Animation_y3i8p")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_doabe"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qk4dl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hqsgw"]
+states/Idle/node = SubResource("AnimationNodeAnimation_doabe")
+states/Idle/position = Vector2(379, 90)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qk4dl")]
+
+[sub_resource type="Gradient" id="Gradient_04rrf"]
+offsets = PackedFloat32Array(0, 0.406452, 0.883871)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.662745, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tkshe"]
+gradient = SubResource("Gradient_04rrf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9, 0.1)
+metadata/_snap_enabled = true
+
+[node name="JollibeeKnightCrew" instance=ExtResource("1_rukes")]
+scale = Vector2(2, 2)
+collision_layer = 32
+collision_mask = 97
+script = ExtResource("2_e642y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_q6656")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -8)
+texture = ExtResource("2_5npww")
+hframes = 6
+frame = 1
+
+[node name="AnimationComponent" parent="." index="2" node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_j5e1q")]
+sprite = NodePath("../Sprite2D")
+animation_player = NodePath("AnimationPlayer")
+animation_tree = NodePath("AnimationTree")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationComponent" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_uf1yu")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationComponent" index="1"]
+tree_root = SubResource("AnimationNodeStateMachine_hqsgw")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." index="3"]
+z_index = -10
+position = Vector2(0, 8.5)
+scale = Vector2(0.400391, 0.109375)
+texture = SubResource("GradientTexture2D_tkshe")

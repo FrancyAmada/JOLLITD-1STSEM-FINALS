@@ -25,6 +25,10 @@ func _physics_process(delta):
 		
 func _process(delta):
 	mouse.global_position = get_global_mouse_position()
+	player_ui.process(delta)
+
+func _input(event):
+	player_ui.input(event)
 
 func check_on_boundary():
 	var new_position = self.global_position + (direction * speed)
