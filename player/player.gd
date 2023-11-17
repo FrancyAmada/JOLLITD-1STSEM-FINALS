@@ -2,6 +2,10 @@ extends Node2D
 
 class_name Player
 
+# Camera Variables
+@export var speed: float = 10.0
+var direction: Vector2 = Vector2.ZERO
+
 @onready var profile: Profile = $Profile
 @onready var player_ui: PlayerUI = $PlayerUI
 @onready var current_cards: Node = player_ui.get_node("Cards")
@@ -12,10 +16,9 @@ var deck: Array
 # current cards
 var cards: Array
 
-@export var speed: float = 10.0
-
-var direction: Vector2 = Vector2.ZERO
-
+var placed_card: bool = false
+var card_timer: float = 0.0
+var card_cooldown: float = 2.5
 
 ## Called when the node enters the scene tree for the first time.
 #func _ready():
@@ -27,6 +30,20 @@ func _physics_process(delta):
 	
 	if check_on_boundary():
 		self.global_position += direction * speed
+		
+	if placed_card:
+		card_timer += delta
+		if card_timer >= card_cooldown:
+			get_card()
+			card_timer = 0.0
+			placed_card = false
+			
+	elif player_ui.cards_node.get_child_count() < 5:
+		card_timer += delta
+		if card_timer >= card_cooldown:
+			get_card()
+			card_timer = 0.0
+			print(player_ui.cards_node.get_child_count())
 		
 func _process(delta):
 	mouse.global_position = get_global_mouse_position()
