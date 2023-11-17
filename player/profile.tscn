@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://by30uaahjjkva"]
+
+[ext_resource type="Script" path="res://player/player_profile.gd" id="1_ot3v3"]
+
+[node name="Profile" type="Node"]
+script = ExtResource("1_ot3v3")

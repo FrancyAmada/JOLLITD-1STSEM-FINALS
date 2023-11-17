@@ -27,6 +27,23 @@ func process(delta):
 	
 #	print_debug("Mouse Position: ", player.get_mouse_position(), " In Game Area: ", mouse_is_in_game_area)
 	
+func add_card(card):
+	var card_instance = card.instantiate()
+	cards_node.add_child(card_instance)
+	set_cards_positions()
+	
+func set_cards_positions():
+	var max_posx = 300
+	var cards_amount = cards_node.get_child_count()
+	var center = player.get_viewport_rect().size / 2
+	var spacing = max_posx / cards_amount
+	var i = 0
+	for card in cards_node.get_children():
+		var card_position = Vector2((center.x + ((cards_amount-1) * spacing)/2) - (i * spacing), 570)
+		i += 1
+		card.initial_position = card_position
+		card.position = card_position
+	
 func input(event):
 	if event is InputEventMouseButton:
 #		print_debug("Mouse is at position: ", event.position)
@@ -37,6 +54,7 @@ func input(event):
 		elif grabbed_card != null:
 			grabbed_card.place(player.get_mouse_position())
 			grabbed_card = null
+			
 	if event is InputEventMouseMotion:
 #		print_debug("Mouse is at position: ", event.position)
 		mouse_position = event.position

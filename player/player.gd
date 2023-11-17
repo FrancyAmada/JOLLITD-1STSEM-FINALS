@@ -2,20 +2,25 @@ extends Node2D
 
 class_name Player
 
+@onready var profile: Profile = $Profile
 @onready var player_ui: PlayerUI = $PlayerUI
 @onready var current_cards: Node = player_ui.get_node("Cards")
 @onready var mouse: Area2D = $Mouse
 
-var cards_list: Array[Card]
+# Cards Deck
+var deck: Array
+# current cards
+var cards: Array
 
 @export var speed: float = 10.0
 
 var direction: Vector2 = Vector2.ZERO
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	get_cards()
+#	print_debug(cards)
 
 func _physics_process(delta):
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -46,3 +51,22 @@ func _on_mouse_area_entered(area):
 func _on_mouse_area_exited(area):
 	if area.is_in_group("game_area"):
 		player_ui.mouse_is_in_game_area = false
+
+func get_cards_from_deck():
+	for card in deck:
+		cards.append(card)
+		cards.append(card)
+
+func get_card():
+	if cards.size() == 0:
+		get_cards_from_deck()
+		
+	var card = cards.pop_front()
+	player_ui.add_card(card)
+	
+func load_player():
+	deck = profile.deck
+	get_cards_from_deck()
+	for i in range(5):
+		get_card()
+	

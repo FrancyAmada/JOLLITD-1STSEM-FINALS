@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmqc6d4c3tqt4"]
+[gd_scene load_steps=6 format=3 uid="uid://bmqc6d4c3tqt4"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_qrn17"]
 [ext_resource type="PackedScene" uid="uid://cnvrm83f3jean" path="res://user_interface/player_ui.tscn" id="2_krdbn"]
 [ext_resource type="PackedScene" uid="uid://2ksrmb60su4e" path="res://camera/game_camera.tscn" id="3_28u4a"]
+[ext_resource type="PackedScene" uid="uid://by30uaahjjkva" path="res://player/profile.tscn" id="4_nfinl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6sqj"]
 
@@ -21,6 +22,8 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_l6sqj")
+
+[node name="Profile" parent="." instance=ExtResource("4_nfinl")]
 
 [connection signal="area_entered" from="Mouse" to="." method="_on_mouse_area_entered"]
 [connection signal="area_exited" from="Mouse" to="." method="_on_mouse_area_exited"]

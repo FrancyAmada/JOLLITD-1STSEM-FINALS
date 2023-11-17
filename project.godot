@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="JOLLI-TD (Final)"
-run/main_scene="res://game_levels/game_map.tscn"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global/global.gd"
 
 [display]
 

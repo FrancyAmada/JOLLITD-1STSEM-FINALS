@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkftlfwq7trsc"]
+[gd_scene load_steps=7 format=3 uid="uid://dkftlfwq7trsc"]
 
+[ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_pgvl0"]
 [ext_resource type="PackedScene" uid="uid://b30tepf0u27km" path="res://tile_map/ground_terrain_tilemap.tscn" id="1_rb7j7"]
 [ext_resource type="PackedScene" uid="uid://y3bfci05hcgy" path="res://tile_map/water_terrain_tilemap.tscn" id="3_3c7mg"]
 [ext_resource type="PackedScene" uid="uid://bmqc6d4c3tqt4" path="res://player/player.tscn" id="4_c5awo"]
@@ -9,6 +10,7 @@
 size = Vector2(2242, 1230.5)
 
 [node name="GameMap" type="Node2D"]
+script = ExtResource("1_pgvl0")
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -32,7 +34,7 @@ position = Vector2(1157, 644.75)
 shape = SubResource("RectangleShape2D_7vns5")
 debug_color = Color(0.756863, 0.454902, 0, 0.419608)
 
-[node name="Player" parent="." instance=ExtResource("4_c5awo")]
+[node name="Player1" parent="." instance=ExtResource("4_c5awo")]
 position = Vector2(461, 266)
 
 [node name="CardSummons" type="Node2D" parent="."]

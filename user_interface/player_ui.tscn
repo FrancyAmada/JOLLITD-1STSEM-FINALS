@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=4 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
-[ext_resource type="PackedScene" uid="uid://c0etmnkhcu1cn" path="res://card/summon_cards/knight_card/knight_card.tscn" id="2_cf0w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
 size = Vector2(1133, 485)
@@ -13,9 +12,6 @@ radius = 8.06226
 script = ExtResource("1_ar28p")
 
 [node name="Cards" type="Node" parent="."]
-
-[node name="KnightCard" parent="Cards" instance=ExtResource("2_cf0w0")]
-position = Vector2(737, 567)
 
 [node name="PlaceArea" type="Area2D" parent="."]
 collision_layer = 2
