@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b18igqp7yxl44"]
+[gd_scene load_steps=13 format=3 uid="uid://b18igqp7yxl44"]
 
 [ext_resource type="PackedScene" uid="uid://dra57ml8bbeho" path="res://card/summon_cards/summon.tscn" id="1_rukes"]
 [ext_resource type="Texture2D" uid="uid://mt3ipe1dk6c3" path="res://assets/jollibee/knight_crew/Jollibee-knight_crew_idle.png" id="2_5npww"]
 [ext_resource type="Script" path="res://card/summon_cards/knight_card/jollibee_knight_crew.gd" id="2_e642y"]
 [ext_resource type="PackedScene" uid="uid://ba2mdypfi1l0u" path="res://components/character_components/animation_component.tscn" id="3_j5e1q"]
+[ext_resource type="PackedScene" uid="uid://cfggx6lfvfoyg" path="res://components/shadow.tscn" id="5_a2jft"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q6656"]
 
@@ -80,17 +81,6 @@ states/Idle/node = SubResource("AnimationNodeAnimation_doabe")
 states/Idle/position = Vector2(379, 90)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_qk4dl")]
 
-[sub_resource type="Gradient" id="Gradient_04rrf"]
-offsets = PackedFloat32Array(0, 0.406452, 0.883871)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.662745, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tkshe"]
-gradient = SubResource("Gradient_04rrf")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.9, 0.1)
-metadata/_snap_enabled = true
-
 [node name="JollibeeKnightCrew" instance=ExtResource("1_rukes")]
 scale = Vector2(2, 2)
 collision_layer = 32
@@ -120,8 +110,4 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_hqsgw")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." index="3"]
-z_index = -10
-position = Vector2(0, 8.5)
-scale = Vector2(0.400391, 0.109375)
-texture = SubResource("GradientTexture2D_tkshe")
+[node name="Shadow" parent="." index="3" instance=ExtResource("5_a2jft")]

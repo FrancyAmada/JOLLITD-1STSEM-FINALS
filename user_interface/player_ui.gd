@@ -57,15 +57,17 @@ func set_cards_positions():
 func input(event):
 	if event is InputEventMouseButton:
 #		print_debug("Mouse is at position: ", event.position)
-		if is_on_card != null:
+		if is_on_card != null and !is_on_card.from_bag:
 			un_grab_cards()
 			grabbed_card = is_on_card
 			is_on_card = null
 			grabbed_card.grab()
+			mouse_area.monitoring = false
 		elif grabbed_card != null:
 			grabbed_card.place(player.get_mouse_position())
 			un_grab_cards()
 			grabbed_card = null
+			mouse_area.monitoring = true
 			
 	if event is InputEventMouseMotion:
 #		print_debug("Mouse is at position: ", event.position)

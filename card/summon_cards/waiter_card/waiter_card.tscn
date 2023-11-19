@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwjps8lvm8e8d"]
+
+[ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter_card.gd" id="1_1lssl"]
+[ext_resource type="Texture2D" uid="uid://cejcgwj5yaedy" path="res://assets/base_cards/PicsArt_11-19-09.10.24.png" id="3_6hq0w"]
+[ext_resource type="PackedScene" uid="uid://pcq64cwv0hvu" path="res://card/card_animation.tscn" id="3_3358f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro7ip"]
+size = Vector2(108, 150)
+
+[node name="WaiterCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_1lssl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_6hq0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ro7ip")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_3358f")]

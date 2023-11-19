@@ -22,7 +22,7 @@ func set_initial_position():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta):
 	if from_bag:
-		global_position = global_position.move_toward(initial_position, 20)
+		global_position = global_position.move_toward(initial_position, 10)
 	if global_position == initial_position:
 		from_bag = false
 
@@ -30,12 +30,14 @@ func place(place_position: Vector2):
 	pass
 
 func grab():
-	is_grabbed = true
-	animation_player.play("grab")
+	if !from_bag:
+		is_grabbed = true
+		animation_player.play("grab")
 	
 func un_grab():
-	is_grabbed = false
-	animation_player.play("un_grab")
+	if !from_bag:
+		is_grabbed = false
+		animation_player.play("un_grab")
 
 func return_to_position():
 	global_position = initial_position
