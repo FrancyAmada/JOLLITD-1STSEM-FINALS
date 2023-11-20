@@ -4,6 +4,7 @@ extends Node2D
 var player1_profile
 
 func _ready():
+	name = "GameMap"
 	player1_profile = get_player1_profile()
 	if player1_profile != null:
 		set_player(player1, player1_profile)

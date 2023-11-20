@@ -2,7 +2,7 @@ extends Area2D
 
 class_name Card
 
-@onready var summon_node: Node2D = get_node("/root/GameMap/CardSummons")
+@onready var summon_node: Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var in_placement_area: bool = false
@@ -13,8 +13,10 @@ var bag_position: Vector2 = Vector2(1075, 575)
 var from_bag: bool = true
 var initial_position: Vector2
 
-#func _ready():
-#	pass
+func _ready():
+	for child in get_node("/root").get_children():
+		if child.name == "GameMap":
+			summon_node = child.get_node("CardSummons")
 
 func set_initial_position():
 	initial_position = Vector2(global_position.x, global_position.y)

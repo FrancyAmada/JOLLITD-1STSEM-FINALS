@@ -73,6 +73,8 @@ func get_cards_from_deck():
 	for card in deck:
 		cards.append(card)
 		cards.append(card)
+	randomize()
+	cards.shuffle()
 
 func get_card():
 	if cards.size() == 0:

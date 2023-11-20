@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x0iy2pf1m86v"
-path="res://.godot/imported/crew_waiter_idle-Sheet.png-cb48e89b14509056044bb44c8fe4816c.ctex"
+uid="uid://nqc1abr2awqm"
+path="res://.godot/imported/waiter_idle.png-44369c8d0a4e7e2b3e1398c9f3fff756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jollibee/waiter/crew_waiter_idle-Sheet.png"
-dest_files=["res://.godot/imported/crew_waiter_idle-Sheet.png-cb48e89b14509056044bb44c8fe4816c.ctex"]
+source_file="res://assets/jollibee/waiter/waiter_idle.png"
+dest_files=["res://.godot/imported/waiter_idle.png-44369c8d0a4e7e2b3e1398c9f3fff756.ctex"]
 
 [params]
 
