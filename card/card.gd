@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Card
 
+@export var cost: int = 0
+
 @onready var summon_node: Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -17,6 +19,7 @@ func _ready():
 	for child in get_node("/root").get_children():
 		if child.name == "GameMap":
 			summon_node = child.get_node("CardSummons")
+	animation_player.play("get_from_bag")
 
 func set_initial_position():
 	initial_position = Vector2(global_position.x, global_position.y)
@@ -24,7 +27,7 @@ func set_initial_position():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta):
 	if from_bag:
-		global_position = global_position.move_toward(initial_position, 10)
+		global_position = global_position.move_toward(initial_position, 70)
 	if global_position == initial_position:
 		from_bag = false
 

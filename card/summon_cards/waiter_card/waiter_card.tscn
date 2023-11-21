@@ -11,6 +11,7 @@ size = Vector2(108, 150)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_1lssl")
+cost = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwkki6fa6mj2p"
-path="res://.godot/imported/waiter_attack.png-503082159c9e9f86f548f6960979aa0d.ctex"
+uid="uid://24i81shuevhp"
+path="res://.godot/imported/intern_walk.png-901643467949c348d6e7e204d825fd78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jollibee/waiter/waiter_attack.png"
-dest_files=["res://.godot/imported/waiter_attack.png-503082159c9e9f86f548f6960979aa0d.ctex"]
+source_file="res://assets/crew members/intern/intern_walk.png"
+dest_files=["res://.godot/imported/intern_walk.png-901643467949c348d6e7e204d825fd78.ctex"]
 
 [params]
 

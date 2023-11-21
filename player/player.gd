@@ -20,10 +20,18 @@ var placed_card: bool = false
 var card_timer: float = 0.0
 var card_cooldown: float = 2.5
 
+# Bone production per second
+var bones_production: float = 0.2
+var bones_float: float = 0.0
+var bones: int = 4
+
+var time_count: float = 0.0
+
 ## Called when the node enters the scene tree for the first time.
-#func _ready():
+func _ready():
 #	get_cards()
 #	print_debug(cards)
+	player_ui.set_bones_label(bones)
 
 func _physics_process(delta):
 	direction = Input.get_vector("left", "right", "up", "down")
@@ -31,28 +39,42 @@ func _physics_process(delta):
 	if check_on_boundary():
 		self.global_position += direction * speed
 		
+	# Check if player just placed a card
 	if placed_card:
 		card_timer += delta
 		if card_timer >= card_cooldown:
 			get_card()
 			card_timer = 0.0
 			placed_card = false
-			
+	
+	# Check if player has less than 5 cards
 	elif player_ui.cards_node.get_child_count() < 5:
 		card_timer += delta
 		if card_timer >= card_cooldown:
 			get_card()
 			card_timer = 0.0
 			print(player_ui.cards_node.get_child_count())
-		
+	
+	# Bone Production
+	if time_count >= 1:
+		time_count = 0
+		bones_float += bones_production
+		if bones_float >= 1.0 and bones < 30:
+			bones_float = 0
+			bones += 1
+			
+	time_count += delta
+	
 func _process(delta):
 	mouse.global_position = get_global_mouse_position()
 	player_ui.process(delta)
+	player_ui.set_bones_label(bones)
 
 func _input(event):
 	player_ui.input(event)
 
 func check_on_boundary():
+	# check if camera is inside the boundary
 	var new_position = self.global_position + (direction * speed)
 	return (-104 <new_position.y and new_position.y < 766) and (
 		-81 < new_position.x and new_position.x < 1000)

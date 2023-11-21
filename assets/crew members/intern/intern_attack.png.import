@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mt3ipe1dk6c3"
-path="res://.godot/imported/Jollibee-knight_crew_idle.png-87355633c08a6b5e8fee0be0bef5d80a.ctex"
+uid="uid://tj38diqb56kn"
+path="res://.godot/imported/intern_attack.png-73409e865535cadd7265315d56282d11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jollibee/knight_crew/Jollibee-knight_crew_idle.png"
-dest_files=["res://.godot/imported/Jollibee-knight_crew_idle.png-87355633c08a6b5e8fee0be0bef5d80a.ctex"]
+source_file="res://assets/crew members/intern/intern_attack.png"
+dest_files=["res://.godot/imported/intern_attack.png-73409e865535cadd7265315d56282d11.ctex"]
 
 [params]
 
