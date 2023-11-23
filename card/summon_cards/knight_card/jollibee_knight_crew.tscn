@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b18igqp7yxl44"]
 
 [ext_resource type="PackedScene" uid="uid://dra57ml8bbeho" path="res://card/summon_cards/summon.tscn" id="1_rukes"]
-[ext_resource type="Texture2D" uid="uid://mt3ipe1dk6c3" path="res://assets/jollibee/knight_crew/Jollibee-knight_crew_idle.png" id="2_5npww"]
+[ext_resource type="Texture2D" uid="uid://mt3ipe1dk6c3" path="res://assets/crew members/knight_crew/Jollibee-knight_crew_idle.png" id="2_5npww"]
 [ext_resource type="Script" path="res://card/summon_cards/knight_card/jollibee_knight_crew.gd" id="2_e642y"]
 [ext_resource type="PackedScene" uid="uid://ba2mdypfi1l0u" path="res://components/character_components/animation_component.tscn" id="3_j5e1q"]
 [ext_resource type="PackedScene" uid="uid://cfggx6lfvfoyg" path="res://components/shadow.tscn" id="5_a2jft"]
@@ -83,8 +83,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="JollibeeKnightCrew" instance=ExtResource("1_rukes")]
 scale = Vector2(2, 2)
-collision_layer = 32
-collision_mask = 97
 script = ExtResource("2_e642y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]

@@ -137,9 +137,10 @@ _data = {
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_2sqhd")
-cost = 1
+cost = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -6.66667)
 scale = Vector2(0.466667, 0.466667)
 skew = 0.05236

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://buy8ymnd7c3do"]
+
+[ext_resource type="Texture2D" uid="uid://0ptcfi2f8a66" path="res://assets/feather.png" id="1_h40nb"]
+
+[sub_resource type="Curve" id="Curve_sqfge"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 140.211), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_elglq"]
+curve = SubResource("Curve_sqfge")
+
+[sub_resource type="Gradient" id="Gradient_ivtga"]
+offsets = PackedFloat32Array(0, 0.785185, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.859259, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0n8w2"]
+gradient = SubResource("Gradient_ivtga")
+
+[sub_resource type="Curve" id="Curve_56p87"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c7hjf"]
+curve = SubResource("Curve_56p87")
+
+[sub_resource type="Curve" id="Curve_ci0ps"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.78597, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s3q7g"]
+curve = SubResource("Curve_ci0ps")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4wi2s"]
+emission_shape = 1
+emission_sphere_radius = 5.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 120.0
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 80.0
+angular_velocity_min = -1.0
+angular_velocity_max = 3.0
+angular_velocity_curve = SubResource("CurveTexture_elglq")
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_max = 90.0
+radial_accel_max = 90.0
+radial_accel_curve = SubResource("CurveTexture_c7hjf")
+damping_max = 10.0
+angle_max = 10.0
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_s3q7g")
+color_ramp = SubResource("GradientTexture1D_0n8w2")
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
+turbulence_noise_speed = Vector3(0, -10, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(0, -12)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_4wi2s")
+texture = ExtResource("1_h40nb")
+lifetime = 2.0
+explosiveness = 1.0

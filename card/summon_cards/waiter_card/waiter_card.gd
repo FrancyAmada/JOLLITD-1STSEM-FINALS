@@ -1,5 +1,7 @@
 extends Card
 
+var waiter: PackedScene = preload("res://card/summon_cards/waiter_card/waiter.tscn")
+
 
 func place(place_position: Vector2):
 	if is_grabbed and in_valid_area and in_placement_area:
@@ -12,4 +14,10 @@ func place(place_position: Vector2):
 		return_to_position()
 		
 func summon(place_position: Vector2):
-	pass
+	for i in range(2):
+		var new_waiter = waiter.instantiate()
+		summon_node.add_child(new_waiter)
+		new_waiter.set_summon_id(player_id)
+#		print_debug("Player ID: ", player_id, " Summon:", new_waiter)
+		new_waiter.global_position = place_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+		

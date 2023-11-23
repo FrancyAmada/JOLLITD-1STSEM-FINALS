@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkftlfwq7trsc"]
+[gd_scene load_steps=9 format=3 uid="uid://dkftlfwq7trsc"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_pgvl0"]
 [ext_resource type="PackedScene" uid="uid://b30tepf0u27km" path="res://tile_map/ground_terrain_tilemap.tscn" id="1_rb7j7"]
 [ext_resource type="PackedScene" uid="uid://y3bfci05hcgy" path="res://tile_map/water_terrain_tilemap.tscn" id="3_3c7mg"]
 [ext_resource type="PackedScene" uid="uid://bmqc6d4c3tqt4" path="res://player/player.tscn" id="4_c5awo"]
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="5_ncj8g"]
+[ext_resource type="PackedScene" uid="uid://tr7g8mds7be1" path="res://card/summon_cards/waiter_card/waiter.tscn" id="6_61k2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vns5"]
 size = Vector2(2242, 1230.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4axt6"]
+size = Vector2(1121, 1233)
 
 [node name="TestGameMap" type="Node2D"]
 script = ExtResource("1_pgvl0")
@@ -30,15 +34,42 @@ collision_mask = 8
 script = ExtResource("5_ncj8g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea"]
-position = Vector2(1157, 644.75)
+position = Vector2(1155, 644.75)
 shape = SubResource("RectangleShape2D_7vns5")
 debug_color = Color(0.756863, 0.454902, 0, 0.419608)
 
 [node name="Player1" parent="." instance=ExtResource("4_c5awo")]
-position = Vector2(461, 266)
+position = Vector2(420, 265)
+
+[node name="PlayerArea" type="Area2D" parent="." groups=["player_area"]]
+position = Vector2(429, 266)
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(165.5, 379.5)
+shape = SubResource("RectangleShape2D_4axt6")
+
+[node name="Polygon2D" type="Polygon2D" parent="PlayerArea"]
+color = Color(0.027451, 0.403922, 0.815686, 0.196078)
+polygon = PackedVector2Array(-395, -237, 726, -237, 726, 994, -395, 994)
 
 [node name="CardSummons" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Waiter" parent="CardSummons" instance=ExtResource("6_61k2j")]
+position = Vector2(2220, 684)
+
+[node name="Waiter2" parent="CardSummons" instance=ExtResource("6_61k2j")]
+position = Vector2(2219, 837)
+
+[node name="Waiter3" parent="CardSummons" instance=ExtResource("6_61k2j")]
+position = Vector2(2187, 498)
+
+[node name="Waiter4" parent="CardSummons" instance=ExtResource("6_61k2j")]
+position = Vector2(2069, 1236)
+
+[node name="Bases" type="Node2D" parent="."]
 
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Player
 
+@onready var player_id: int = 1
+
 # Camera Variables
 @export var speed: float = 10.0
 var direction: Vector2 = Vector2.ZERO
@@ -21,7 +23,7 @@ var card_timer: float = 0.0
 var card_cooldown: float = 2.5
 
 # Bone production per second
-var bones_production: float = 0.2
+var bones_production: float = 2
 var bones_float: float = 0.0
 var bones: int = 4
 
@@ -60,8 +62,11 @@ func _physics_process(delta):
 		time_count = 0
 		bones_float += bones_production
 		if bones_float >= 1.0 and bones < 30:
-			bones_float = 0
-			bones += 1
+			if bones + floor(bones_float) > 30:
+				bones = 30
+			else:
+				bones += floor(bones_float)
+			bones_float -= floor(bones_float)
 			
 	time_count += delta
 	
@@ -69,6 +74,7 @@ func _process(delta):
 	mouse.global_position = get_global_mouse_position()
 	player_ui.process(delta)
 	player_ui.set_bones_label(bones)
+	player_ui.set_deck_label(cards.size())
 
 func _input(event):
 	player_ui.input(event)
@@ -76,8 +82,7 @@ func _input(event):
 func check_on_boundary():
 	# check if camera is inside the boundary
 	var new_position = self.global_position + (direction * speed)
-	return (-104 <new_position.y and new_position.y < 766) and (
-		-81 < new_position.x and new_position.x < 1000)
+	return (20 < new_position.y and new_position.y < 560) and (138 < new_position.x and new_position.x < 788)
 
 func get_mouse_position():
 	return Vector2(mouse.global_position.x, mouse.global_position.y)
@@ -86,10 +91,14 @@ func get_mouse_position():
 func _on_mouse_area_entered(area):
 	if area.is_in_group("game_area"):
 		player_ui.mouse_is_in_game_area = true
+	if area.is_in_group("player_area"):
+		player_ui.mouse_is_in_player_area = true
 
 func _on_mouse_area_exited(area):
 	if area.is_in_group("game_area"):
 		player_ui.mouse_is_in_game_area = false
+	if area.is_in_group("player_area"):
+		player_ui.mouse_is_in_player_area = false
 
 func get_cards_from_deck():
 	for card in deck:
@@ -99,11 +108,11 @@ func get_cards_from_deck():
 	cards.shuffle()
 
 func get_card():
-	if cards.size() == 0:
-		get_cards_from_deck()
-		
 	var card = cards.pop_front()
 	player_ui.add_card(card)
+	
+	if cards.size() == 0:
+		get_cards_from_deck()
 	
 func load_player():
 	deck = profile.deck

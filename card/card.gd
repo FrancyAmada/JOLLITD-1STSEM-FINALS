@@ -4,6 +4,8 @@ class_name Card
 
 @export var cost: int = 0
 
+var player_id: int
+
 @onready var summon_node: Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -27,7 +29,7 @@ func set_initial_position():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta):
 	if from_bag:
-		global_position = global_position.move_toward(initial_position, 70)
+		global_position = global_position.move_toward(initial_position, 50)
 	if global_position == initial_position:
 		from_bag = false
 
@@ -48,3 +50,6 @@ func return_to_position():
 	global_position = initial_position
 	in_valid_area = false
 	in_placement_area = false
+
+func set_id(id: int):
+	player_id = id

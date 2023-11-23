@@ -5,11 +5,13 @@ class_name PlayerUI
 @onready var player: Player = get_parent()
 @onready var cards_node: Node = get_node("Cards")
 @onready var bones_label: Label = $BonesLabel
+@onready var deck_label: Label = $DeckLabel
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse
 var mouse_position: Vector2 = Vector2.ZERO
 var mouse_is_in_game_area: bool = false
+var mouse_is_in_player_area: bool = false
 
 var is_on_card: Card = null
 var grabbed_card: Card = null
@@ -35,6 +37,7 @@ func process(delta):
 func add_card(card):
 	var card_instance = card.instantiate()
 	cards_node.add_child(card_instance)
+	card_instance.set_id(player.player_id)
 	set_cards_positions()
 	card_instance.global_position = card_instance.bag_position
 	
@@ -59,17 +62,16 @@ func set_cards_positions():
 func input(event):
 	if event is InputEventMouseButton:
 #		print_debug("Mouse is at position: ", event.position)
-		if is_on_card != null and !is_on_card.from_bag:
-			un_grab_cards()
+		if is_on_card != null and !is_on_card.from_bag and grabbed_card == null:
 			grabbed_card = is_on_card
 			is_on_card = null
 			grabbed_card.grab()
 			mouse_area.monitoring = false
 		elif grabbed_card != null:
-			if grabbed_card.cost <= player.bones:
+			if grabbed_card.cost <= player.bones and grabbed_card.in_placement_area and mouse_is_in_player_area:
 				player.bones -= grabbed_card.cost
 				grabbed_card.place(player.get_mouse_position())
-			un_grab_cards()
+			grabbed_card.un_grab()
 			grabbed_card = null
 			mouse_area.monitoring = true
 			
@@ -103,11 +105,9 @@ func cards_process(delta: float):
 	for card in cards_node.get_children():
 		if card.from_bag:
 			card.process(delta)
-			
-func un_grab_cards():
-	for card in cards_node.get_children():
-		card.un_grab()
 
 func set_bones_label(amount: int):
 	bones_label.text = str(amount)
 	
+func set_deck_label(amount: int):
+	deck_label.text = str(amount)
