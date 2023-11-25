@@ -21,3 +21,12 @@ func set_summon_id(id: int):
 	summon_id = id
 	hitbox_component.id = id
 	
+func receive_hit(damage: float):
+	self.health -= damage
+	print(self, " Received Hit -- Remaining Health:", self.health)
+	if self.health <= 0:
+		die()
+		
+func die():
+	is_dead = true
+	animation_component.play("Death")

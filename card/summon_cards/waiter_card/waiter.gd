@@ -58,16 +58,6 @@ func set_direction():
 	else:
 		go_to_target()
 
-func receive_hit(damage: float):
-	self.health -= damage
-	print(self, " Received Hit -- Remaining Health:", self.health)
-	if self.health <= 0:
-		die()
-		
-func die():
-	is_dead = true
-	animation_component.play("Death")
-
 func _on_animation_finished(anim_name: String):
 	if anim_name == "Death":
 		queue_free()
