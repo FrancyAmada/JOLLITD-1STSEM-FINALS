@@ -293,6 +293,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_uj62u")
 blend_point_1/pos = 1.0
 blend_point_2/node = SubResource("AnimationNodeAnimation_7qqbv")
 blend_point_2/pos = -1.0
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_34v7f"]
 advance_mode = 2
@@ -334,8 +335,8 @@ shape = SubResource("CircleShape2D_sp6cw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -26)
-texture = ExtResource("2_k6u7d")
-hframes = 6
+texture = ExtResource("2_o5p6y")
+hframes = 10
 frame = 1
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_p6mr3")]
@@ -351,7 +352,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
 tree_root = SubResource("AnimationNodeStateMachine_0ulwf")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Move/blend_position = 0
+parameters/Move/blend_position = -0.996997
 
 [node name="Shadow" parent="." instance=ExtResource("4_yeufb")]
 position = Vector2(0, 7.5)
