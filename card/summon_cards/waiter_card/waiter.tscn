@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://tr7g8mds7be1"]
+[gd_scene load_steps=34 format=3 uid="uid://tr7g8mds7be1"]
 
 [ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter.gd" id="1_pb5db"]
 [ext_resource type="Texture2D" uid="uid://vbfd7xeboa33" path="res://assets/crew members/waiter/waiter_walk.png" id="2_h581h"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c1tq8642tjcmw" path="res://components/character_components/attack_component.tscn" id="8_xw7w5"]
 [ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter_attack.gd" id="9_mr56h"]
 [ext_resource type="PackedScene" uid="uid://buy8ymnd7c3do" path="res://components/feathers.tscn" id="11_ma5jh"]
+[ext_resource type="PackedScene" uid="uid://cq3gias2vkp26" path="res://components/health_bar.tscn" id="12_siyq4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sp6cw"]
 
@@ -52,6 +53,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackComponent")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deal_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_76a0a"]
 resource_name = "Death"
@@ -63,7 +78,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1, 2),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.3)]
 }
@@ -220,6 +235,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sprite2D:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_k6u7d")]
+}
 
 [sub_resource type="Animation" id="Animation_h3iwu"]
 resource_name = "Walk"
@@ -306,6 +333,10 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gby3n"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vp4bw"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0ulwf"]
 states/Attack/node = SubResource("AnimationNodeAnimation_7rgmf")
 states/Attack/position = Vector2(572, 39)
@@ -313,7 +344,7 @@ states/Death/node = SubResource("AnimationNodeAnimation_rouyb")
 states/Death/position = Vector2(601, 124)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_bp08s")
 states/Move/position = Vector2(447, 90)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_34v7f"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_4qlcx"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_vc1qa"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_gby3n")]
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_34v7f"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_4qlcx"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_vc1qa"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_gby3n"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_vp4bw")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mr5g4"]
 radius = 200.0
@@ -358,11 +389,13 @@ parameters/Move/blend_position = -0.996997
 position = Vector2(0, 7)
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_acebl")]
+visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mr5g4")
 
 [node name="HitBox" parent="." instance=ExtResource("7_c1dpc")]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -373,7 +406,9 @@ shape = SubResource("RectangleShape2D_hwpcl")
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_component") instance=ExtResource("8_xw7w5")]
 script = ExtResource("9_mr56h")
 animation_component = NodePath("../AnimationComponent")
-attack_damage = 10.0
-attack_cd = 1.0
+attack_damage = 15.0
+attack_cd = 1.5
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_ma5jh")]
+
+[node name="HealthBar" parent="." instance=ExtResource("12_siyq4")]

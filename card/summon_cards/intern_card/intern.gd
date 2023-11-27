@@ -8,6 +8,7 @@ class_name Intern
 @onready var target = null
 
 func _ready():
+	set_healthbar()
 	set_direction()
 	animation_component.connect("animation_is_finished", _on_animation_finished)
 	particle.emitting = false
@@ -34,6 +35,7 @@ func _physics_process(delta):
 	move_and_slide()
 	animation_component.update_animation(direction)
 	animation_component.update_facing_direction(direction)
+	update_healthbar()
 
 func set_target():
 	target = target_detection.get_target()

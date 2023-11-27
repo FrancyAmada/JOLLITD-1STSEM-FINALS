@@ -28,5 +28,10 @@ func use_attack(target):
 	
 func _on_attack_animation_finished(anim_name: String):
 	if anim_name == "Attack" and target != null:
+		pass
+#		target.receive_hit(attack_damage)
+#		animation_component.play("Move")
+
+func deal_attack():
+	if target != null:
 		target.receive_hit(attack_damage)
-		animation_component.play("Move")
