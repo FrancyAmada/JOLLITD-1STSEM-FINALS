@@ -335,8 +335,8 @@ shape = SubResource("CircleShape2D_sp6cw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -26)
-texture = ExtResource("2_o5p6y")
-hframes = 10
+texture = ExtResource("2_k6u7d")
+hframes = 6
 frame = 1
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_p6mr3")]
@@ -355,7 +355,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = -0.996997
 
 [node name="Shadow" parent="." instance=ExtResource("4_yeufb")]
-position = Vector2(0, 7.5)
+position = Vector2(0, 7)
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_acebl")]
 

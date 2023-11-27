@@ -23,7 +23,7 @@ func get_nearest_target():
 	nearest_distance = 1000
 	for hit_box in targets_list:
 		var distance: float = global_position.distance_to(hit_box.global_position)
-		if distance < nearest_distance:
+		if distance < nearest_distance and int(hit_box.id) != int(parent.summon_id):
 			nearest_distance = distance
 			nearest_target = hit_box
 	
@@ -35,11 +35,9 @@ func get_target():
 func _on_area_entered(area):
 	if area.is_in_group("hit_box") and area != parent.hitbox_component:
 #		print_debug(parent, " summon id:",  parent.summon_id, " --- Target id:", area.id)
-		if int(area.id) != int(parent.summon_id):
-			targets_list.append(area)
-#			print_debug(area.name, " - detected by ", parent, " ID: ", parent.summon_id)
+		targets_list.append(area)
+#		print_debug(area.name, " - detected by ", parent, " ID: ", parent.summon_id)
 
 func _on_area_exited(area):
 	if area in targets_list:
 		targets_list.erase(area)
-	

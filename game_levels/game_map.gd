@@ -3,6 +3,9 @@ extends Node2D
 @onready var player1: Player = get_node("Player1")
 var player1_profile
 
+@export var boundary: Array[int] = [0, 0, 0, 0]
+
+
 func _ready():
 	name = "GameMap"
 	player1_profile = get_player1_profile()

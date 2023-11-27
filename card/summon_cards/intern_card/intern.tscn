@@ -123,7 +123,7 @@ tracks/5/path = NodePath("../GPUParticles2D:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -317,24 +317,29 @@ states/Move/node = SubResource("AnimationNodeBlendSpace1D_2222o")
 states/Move/position = Vector2(395, 158)
 states/Start/position = Vector2(174, 158)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lg7n5"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_tyivr"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_yfme2"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_qrb26")]
+graph_offset = Vector2(0, 35.9649)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g6pa"]
 radius = 201.729
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wr817"]
-size = Vector2(20, 38)
+size = Vector2(20, 39)
 
 [node name="Intern" type="CharacterBody2D"]
+z_index = 10
 scale = Vector2(3, 3)
+collision_layer = 32
 script = ExtResource("1_lc5ln")
+normal_speed = 120.0
+health = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mip77")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -26)
-texture = ExtResource("2_kvbj4")
-hframes = 10
+texture = ExtResource("5_m4sjm")
+hframes = 6
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_v7d38")]
 sprite = NodePath("../Sprite2D")
@@ -349,10 +354,10 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
 tree_root = SubResource("AnimationNodeStateMachine_kmt1v")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Move/blend_position = -0.322823
+parameters/Move/blend_position = -0.0135135
 
 [node name="Shadow" parent="." instance=ExtResource("6_v3qp7")]
-modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 7)
 
 [node name="TargetDetection" parent="." instance=ExtResource("8_qhqdy")]
 
@@ -360,9 +365,11 @@ modulate = Color(0, 0, 0, 1)
 shape = SubResource("CircleShape2D_0g6pa")
 
 [node name="HitBox" parent="." instance=ExtResource("9_7lvwn")]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -9)
+position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_wr817")
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_component") instance=ExtResource("9_pv03g")]

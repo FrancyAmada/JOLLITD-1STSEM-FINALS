@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Player
 
+@onready var game_map: Node2D = get_parent()
+
 @onready var player_id: int = 1
 
 # Camera Variables
@@ -80,9 +82,10 @@ func _input(event):
 	player_ui.input(event)
 
 func check_on_boundary():
+	var boundary = game_map.boundary
 	# check if camera is inside the boundary
 	var new_position = self.global_position + (direction * speed)
-	return (20 < new_position.y and new_position.y < 560) and (138 < new_position.x and new_position.x < 788)
+	return (boundary[0] < new_position.y and new_position.y < boundary[1]) and (boundary[2] < new_position.x and new_position.x < boundary[3])
 
 func get_mouse_position():
 	return Vector2(mouse.global_position.x, mouse.global_position.y)
