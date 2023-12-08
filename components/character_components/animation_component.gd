@@ -19,7 +19,8 @@ func _ready():
 
 # Update Character Animation
 func update_animation(direction: Vector2):
-	animation_tree.set("parameters/Move/blend_position", direction.x)
+	var magnitude: float = direction.length()
+	animation_tree.set("parameters/Move/blend_position", magnitude)
 
 # Update Face direction
 func update_facing_direction(direction: Vector2):

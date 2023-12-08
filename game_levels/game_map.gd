@@ -3,6 +3,9 @@ extends Node2D
 @onready var player1: Player = get_node("Player1")
 var player1_profile
 
+@export var boundary: Array[int] = [0, 0, 0, 0]
+
+
 func _ready():
 	name = "GameMap"
 	player1_profile = get_player1_profile()
@@ -46,7 +49,7 @@ func get_player1_profile():
 		return loaded_data
 
 func create_new_profile():
-	var beginner_deck: Array = [Global.available_cards[0], Global.available_cards[1]]
+	var beginner_deck: Array = [Global.available_cards[0], Global.available_cards[1], Global.available_cards[2]]
 	var profile_name = "Administrator"
 	var dict := {
 		"profile": {

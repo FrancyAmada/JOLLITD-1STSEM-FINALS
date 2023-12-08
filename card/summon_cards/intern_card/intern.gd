@@ -1,6 +1,6 @@
 extends Summon
 
-class_name Waiter
+class_name Intern
 
 @onready var attack_component: AttackComponent = $AttackComponent
 @onready var particle: GPUParticles2D = $GPUParticles2D
@@ -63,4 +63,3 @@ func set_direction():
 func _on_animation_finished(anim_name: String):
 	if anim_name == "Death":
 		queue_free()
-

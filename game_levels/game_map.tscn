@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkftlfwq7trsc"]
+[gd_scene load_steps=10 format=3 uid="uid://dkftlfwq7trsc"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_pgvl0"]
 [ext_resource type="PackedScene" uid="uid://b30tepf0u27km" path="res://tile_map/ground_terrain_tilemap.tscn" id="1_rb7j7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bmqc6d4c3tqt4" path="res://player/player.tscn" id="4_c5awo"]
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="5_ncj8g"]
 [ext_resource type="PackedScene" uid="uid://tr7g8mds7be1" path="res://card/summon_cards/waiter_card/waiter.tscn" id="6_61k2j"]
+[ext_resource type="PackedScene" uid="uid://bdsirpy5yaygd" path="res://card/summon_cards/intern_card/intern.tscn" id="7_m4vjg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vns5"]
 size = Vector2(2242, 1230.5)
@@ -15,6 +16,7 @@ size = Vector2(1121, 1233)
 
 [node name="TestGameMap" type="Node2D"]
 script = ExtResource("1_pgvl0")
+boundary = Array[int]([10, 570, 130, 800])
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -68,6 +70,12 @@ position = Vector2(2187, 498)
 
 [node name="Waiter4" parent="CardSummons" instance=ExtResource("6_61k2j")]
 position = Vector2(2069, 1236)
+
+[node name="Intern" parent="CardSummons" instance=ExtResource("7_m4vjg")]
+position = Vector2(2055, 343)
+
+[node name="Intern2" parent="CardSummons" instance=ExtResource("7_m4vjg")]
+position = Vector2(1979, 243)
 
 [node name="Bases" type="Node2D" parent="."]
 
