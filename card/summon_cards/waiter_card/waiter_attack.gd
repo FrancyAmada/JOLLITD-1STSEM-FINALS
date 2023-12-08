@@ -25,6 +25,7 @@ func use_attack(target):
 	if can_use_attack and target != null and !parent.is_dead:
 		animation_component.play("Attack")
 		self.target = target
+		can_use_attack = false
 	
 func _on_attack_animation_finished(anim_name: String):
 	if anim_name == "Attack" and target != null:

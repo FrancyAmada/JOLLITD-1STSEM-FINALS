@@ -8,13 +8,18 @@ var summon_id: int = 0
 @onready var target_detection: TargetDetectionComponent = $TargetDetection
 @onready var hitbox_component: HitBoxComponent = $HitBox
 @onready var healthbar: ProgressBar = $HealthBar
+@onready var effects_component: EffectsComponent = $EffectsComponent
 
 # Speed Variables
 @export var normal_speed: float = 80
 @onready var speed: float = normal_speed
 
+# Health Variables
 @export var health: float = 100
 var is_dead: bool = false
+
+@export var attack_range: int = 90
+var on_attack_range: bool = false
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -30,6 +35,9 @@ func receive_hit(damage: float):
 		healthbar.visible = false
 		die()
 		
+func receive_effect(effect, effect_time: float):
+	effects_component.add_effect(effect, effect_time)
+
 func die():
 	is_dead = true
 	animation_component.play("Death")

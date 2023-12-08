@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://tr7g8mds7be1"]
+[gd_scene load_steps=35 format=3 uid="uid://tr7g8mds7be1"]
 
 [ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter.gd" id="1_pb5db"]
 [ext_resource type="Texture2D" uid="uid://vbfd7xeboa33" path="res://assets/crew members/waiter/waiter_walk.png" id="2_h581h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter_attack.gd" id="9_mr56h"]
 [ext_resource type="PackedScene" uid="uid://buy8ymnd7c3do" path="res://components/feathers.tscn" id="11_ma5jh"]
 [ext_resource type="PackedScene" uid="uid://cq3gias2vkp26" path="res://components/health_bar.tscn" id="12_siyq4"]
+[ext_resource type="PackedScene" uid="uid://c26svhrwpq6jy" path="res://components/character_components/effects_component.tscn" id="13_yx02t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sp6cw"]
 
@@ -424,3 +425,5 @@ attack_cd = 1.5
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_ma5jh")]
 
 [node name="HealthBar" parent="." instance=ExtResource("12_siyq4")]
+
+[node name="EffectsComponent" parent="." instance=ExtResource("13_yx02t")]

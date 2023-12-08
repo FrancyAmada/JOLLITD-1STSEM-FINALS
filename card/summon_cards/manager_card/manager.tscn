@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bi30ii4vy0in1"]
+[gd_scene load_steps=38 format=3 uid="uid://bi30ii4vy0in1"]
 
 [ext_resource type="Script" path="res://card/summon_cards/manager_card/Manager.gd" id="1_x62q4"]
 [ext_resource type="Texture2D" uid="uid://cvsnwypqpgpbg" path="res://assets/crew members/manager/manager_idle.png" id="2_anhi1"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://buy8ymnd7c3do" path="res://components/feathers.tscn" id="9_4hqye"]
 [ext_resource type="Script" path="res://card/summon_cards/manager_card/manager_attack.gd" id="10_qoams"]
 [ext_resource type="PackedScene" uid="uid://cq3gias2vkp26" path="res://components/health_bar.tscn" id="10_ya5f5"]
+[ext_resource type="PackedScene" uid="uid://c26svhrwpq6jy" path="res://components/character_components/effects_component.tscn" id="13_cai6j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdo5b"]
 
@@ -457,3 +458,5 @@ script = ExtResource("10_qoams")
 [node name="GPUParticles2D" parent="." instance=ExtResource("9_4hqye")]
 
 [node name="HealthBar" parent="." instance=ExtResource("10_ya5f5")]
+
+[node name="EffectsComponent" parent="." instance=ExtResource("13_cai6j")]

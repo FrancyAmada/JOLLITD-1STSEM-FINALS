@@ -8,24 +8,28 @@ class_name Janitor
 @onready var target = null
 
 func _ready():
+	set_healthbar()
 	set_direction()
 	animation_component.connect("animation_is_finished", _on_animation_finished)
 	particle.emitting = false
 
 func _physics_process(delta):
+	effects_component.process(delta)
 #	print(" Value:", get_node("Sprite2D").modulate, "")
 	attack_component.process(delta)
 	target_detection.process(delta)
 #	print(name, " ID:", summon_id, " Target:", target)
 	set_target()
 	set_direction()
+	animation_component.update_facing_direction(direction)
 
-	if direction != Vector2.ZERO:
+	if !on_attack_range and direction != Vector2.ZERO:
 		velocity = direction * speed
 		
 	# Character has stopped and there is an enemy
-	elif direction == Vector2.ZERO and target != null:
+	elif on_attack_range and target != null:
 		attack_component.use_attack(target)
+		direction = Vector2.ZERO
 		velocity = Vector2.ZERO
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
@@ -33,7 +37,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 	animation_component.update_animation(direction)
-	animation_component.update_facing_direction(direction)
+	update_healthbar()
 
 func set_target():
 	target = target_detection.get_target()
@@ -49,10 +53,11 @@ func go_to_enemy_base():
 func go_to_target():
 	direction = (target.global_position - global_position).normalized()
 	var distance: float = global_position.distance_to(target.global_position)
-	if distance <= 90:
-		direction = Vector2.ZERO
+	if distance <= attack_range:
+		on_attack_range = true
 
 func set_direction():
+	on_attack_range = false
 	if target == null:
 		go_to_enemy_base()
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bdsirpy5yaygd"]
+[gd_scene load_steps=35 format=3 uid="uid://bdsirpy5yaygd"]
 
 [ext_resource type="Script" path="res://card/summon_cards/intern_card/intern.gd" id="1_lc5ln"]
 [ext_resource type="Texture2D" uid="uid://tj38diqb56kn" path="res://assets/crew members/intern/intern_attack.png" id="2_kvbj4"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1tq8642tjcmw" path="res://components/character_components/attack_component.tscn" id="9_pv03g"]
 [ext_resource type="Script" path="res://card/summon_cards/intern_card/intern_attack.gd" id="10_p4qs7"]
 [ext_resource type="PackedScene" uid="uid://cq3gias2vkp26" path="res://components/health_bar.tscn" id="12_pjdye"]
+[ext_resource type="PackedScene" uid="uid://c26svhrwpq6jy" path="res://components/character_components/effects_component.tscn" id="13_sj6vo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mip77"]
 radius = 8.05536
@@ -429,3 +430,5 @@ attack_cd = 1.0
 [node name="GPUParticles2D" parent="." instance=ExtResource("6_djcrn")]
 
 [node name="HealthBar" parent="." instance=ExtResource("12_pjdye")]
+
+[node name="EffectsComponent" parent="." instance=ExtResource("13_sj6vo")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c26svhrwpq6jy"]
+
+[ext_resource type="Script" path="res://components/character_components/effects_component.gd" id="1_10ip2"]
+[ext_resource type="PackedScene" uid="uid://6hf2oywbsswb" path="res://components/effects/slowed.tscn" id="2_yqu6i"]
+
+[node name="EffectsComponent" type="Node2D"]
+script = ExtResource("1_10ip2")
+
+[node name="SlowedEffect" parent="." instance=ExtResource("2_yqu6i")]
+position = Vector2(0, -16)
+emitting = false

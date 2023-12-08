@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://6hf2oywbsswb"]
+
+[ext_resource type="Texture2D" uid="uid://pvmtd2ptfy64" path="res://assets/water_drops.png" id="1_dtd0s"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ektqg"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ic71c"]
+emission_shape = 1
+emission_sphere_radius = 25.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.992157, 1, 1, 1)
+anim_offset_max = 1.0
+
+[node name="SlowedEffect" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_ektqg")
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_ic71c")
+texture = ExtResource("1_dtd0s")

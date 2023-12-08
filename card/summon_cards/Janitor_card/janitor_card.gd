@@ -1,6 +1,6 @@
 extends Card
 
-var janitor: PackedScene = preload("res://card/summon_cards/Janitor_card/janitor_card.tscn")
+var janitor: PackedScene = preload("res://card/summon_cards/Janitor_card/janitor.tscn")
 
 
 func place(place_position: Vector2):
@@ -14,7 +14,7 @@ func place(place_position: Vector2):
 		return_to_position()
 		
 func summon(place_position: Vector2):
-	for i in range(2):
+	for i in range(1):
 		var new_janitor = janitor.instantiate()
 		summon_node.add_child(new_janitor)
 		new_janitor.set_summon_id(player_id)
