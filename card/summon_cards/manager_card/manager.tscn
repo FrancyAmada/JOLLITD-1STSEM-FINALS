@@ -414,7 +414,9 @@ script = ExtResource("1_x62q4")
 shape = SubResource("CircleShape2D_bdo5b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -26)
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_anhi1")
 hframes = 6
 frame = 1
@@ -431,11 +433,16 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_tng0p")
+}
 tree_root = SubResource("AnimationNodeStateMachine_b3g8r")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0
 
 [node name="Shadow" parent="." instance=ExtResource("4_ui0ov")]
+modulate = Color(0, 0, 0, 1)
 
 [node name="TargetDetection" parent="." instance=ExtResource("5_lyops")]
 visible = false

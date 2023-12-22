@@ -399,6 +399,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
+libraries = {
+"": SubResource("AnimationLibrary_yupo3")
+}
 tree_root = SubResource("AnimationNodeStateMachine_kmt1v")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = -0.0135135
