@@ -474,6 +474,7 @@ radius = 700.0
 size = Vector2(25, 40)
 
 [node name="Manager" type="CharacterBody2D"]
+z_index = 10
 scale = Vector2(3, 3)
 collision_layer = 32
 collision_mask = 65
