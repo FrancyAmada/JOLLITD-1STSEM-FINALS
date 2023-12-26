@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=8 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
 [ext_resource type="Texture2D" uid="uid://bvb2ptot5jry5" path="res://assets/Bone.png" id="2_4ue32"]
 [ext_resource type="Texture2D" uid="uid://cejcgwj5yaedy" path="res://assets/base_cards/PicsArt_11-19-09.10.24.png" id="3_tqxep"]
+[ext_resource type="Texture2D" uid="uid://dd7k4bgfvg8pi" path="res://assets/deck_background.png" id="4_xevug"]
+[ext_resource type="Texture2D" uid="uid://dgtlvsphqrh8u" path="res://assets/bones_background.png" id="5_v5s3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
-size = Vector2(1133, 485)
+size = Vector2(1266, 485)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqhir"]
 radius = 8.06226
@@ -20,7 +22,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceArea"]
-position = Vector2(573.5, 253.5)
+position = Vector2(640, 253.5)
 shape = SubResource("RectangleShape2D_06sgl")
 
 [node name="Mouse" type="Area2D" parent="." groups=["mouse"]]
@@ -30,16 +32,16 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse"]
 shape = SubResource("CircleShape2D_hqhir")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(60, 570)
-scale = Vector2(0.357812, 0.357812)
+[node name="Bone" type="Sprite2D" parent="."]
+position = Vector2(214, 569)
+scale = Vector2(0.57, 0.57)
 texture = ExtResource("2_4ue32")
 
 [node name="BonesLabel" type="Label" parent="."]
-offset_left = 95.0
-offset_top = 528.0
-offset_right = 219.0
-offset_bottom = 627.0
+offset_left = 243.0
+offset_top = 539.0
+offset_right = 367.0
+offset_bottom = 638.0
 tooltip_text = "Current amount of bones you have."
 mouse_filter = 1
 mouse_default_cursor_shape = 16
@@ -57,7 +59,7 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="Deck" type="Node2D" parent="."]
-position = Vector2(1081, 568)
+position = Vector2(1161, 565)
 
 [node name="Sprite2D" type="Sprite2D" parent="Deck"]
 position = Vector2(0, 20)
@@ -90,10 +92,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_tqxep")
 
 [node name="DeckLabel" type="Label" parent="."]
-offset_left = 1072.0
-offset_top = 575.0
-offset_right = 1127.0
-offset_bottom = 647.0
+offset_left = 1178.0
+offset_top = 577.0
+offset_right = 1233.0
+offset_bottom = 649.0
 tooltip_text = "Remaining cards on deck before reshuffle."
 mouse_filter = 1
 mouse_default_cursor_shape = 16
@@ -106,6 +108,18 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="DeckBackground" type="Sprite2D" parent="."]
+z_index = -50
+position = Vector2(660, 611)
+scale = Vector2(4.40625, 3.53125)
+texture = ExtResource("4_xevug")
+
+[node name="BonesBackground" type="Sprite2D" parent="."]
+z_index = -55
+position = Vector2(278, 628)
+scale = Vector2(5, 5)
+texture = ExtResource("5_v5s3g")
 
 [connection signal="area_entered" from="PlaceArea" to="." method="_on_place_area_area_entered"]
 [connection signal="area_exited" from="PlaceArea" to="." method="_on_place_area_area_exited"]

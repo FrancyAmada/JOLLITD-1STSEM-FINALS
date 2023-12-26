@@ -6,6 +6,7 @@ class_name PlayerUI
 @onready var cards_node: Node = get_node("Cards")
 @onready var bones_label: Label = $BonesLabel
 @onready var deck_label: Label = $DeckLabel
+@onready var deck_bg: Sprite2D = $DeckBackground
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse
@@ -45,7 +46,8 @@ func set_cards_positions():
 	var spacing: float
 	var max_posx = 450
 	var cards_amount = cards_node.get_child_count()
-	var center = player.get_viewport_rect().size / 2
+	var center = deck_bg.global_position
+#	var center = player.get_viewport_rect().size / 2
 	if cards_amount != 0:
 		spacing = max_posx / cards_amount
 	else:
