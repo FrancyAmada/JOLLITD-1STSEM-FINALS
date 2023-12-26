@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://r42j2pr5flly"]
+
+[ext_resource type="Script" path="res://card/summon_cards/manager_card/manager_card.gd" id="1_tnv67"]
+[ext_resource type="Texture2D" uid="uid://b5pwybo4dmddu" path="res://assets/base_cards/PicsArt_11-19-11.15.14.png" id="2_oiv3w"]
+[ext_resource type="PackedScene" uid="uid://pcq64cwv0hvu" path="res://card/card_animation.tscn" id="3_lofx7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr5p2"]
+size = Vector2(108, 150)
+
+[node name="ManagerCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_tnv67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_oiv3w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vr5p2")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_lofx7")]
+audio_max_polyphony = 127

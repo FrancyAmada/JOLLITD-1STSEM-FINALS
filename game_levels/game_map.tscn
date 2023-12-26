@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkftlfwq7trsc"]
+[gd_scene load_steps=12 format=3 uid="uid://dkftlfwq7trsc"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_pgvl0"]
 [ext_resource type="PackedScene" uid="uid://b30tepf0u27km" path="res://tile_map/ground_terrain_tilemap.tscn" id="1_rb7j7"]
@@ -7,7 +7,8 @@
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="5_ncj8g"]
 [ext_resource type="PackedScene" uid="uid://tr7g8mds7be1" path="res://card/summon_cards/waiter_card/waiter.tscn" id="6_61k2j"]
 [ext_resource type="PackedScene" uid="uid://bdsirpy5yaygd" path="res://card/summon_cards/intern_card/intern.tscn" id="7_m4vjg"]
-[ext_resource type="PackedScene" uid="uid://blswln1pv5w4v" path="res://card/summon_cards/janitor_card/janitor.tscn" id="8_wre64"]
+[ext_resource type="PackedScene" uid="uid://bodxpefv64rqg" path="res://card/summon_cards/janitor_card/janitor.tscn" id="8_wre64"]
+[ext_resource type="PackedScene" uid="uid://cp8vxxdygkpy2" path="res://card/summon_cards/manager_card/manager.tscn" id="9_e3ip1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vns5"]
 size = Vector2(2242, 1230.5)
@@ -57,6 +58,10 @@ shape = SubResource("RectangleShape2D_4axt6")
 color = Color(0.027451, 0.403922, 0.815686, 0.196078)
 polygon = PackedVector2Array(-395, -237, 726, -237, 726, 994, -395, 994)
 
+[node name="Bases" type="Node2D" parent="."]
+
+[node name="Projectiles" type="Node2D" parent="."]
+
 [node name="CardSummons" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -84,7 +89,11 @@ position = Vector2(2127, 587)
 [node name="Janitor2" parent="CardSummons" instance=ExtResource("8_wre64")]
 position = Vector2(2172, 1200)
 
-[node name="Bases" type="Node2D" parent="."]
+[node name="Manager" parent="CardSummons" instance=ExtResource("9_e3ip1")]
+position = Vector2(2098, 845)
+
+[node name="Manager2" parent="CardSummons" instance=ExtResource("9_e3ip1")]
+position = Vector2(2110, 718)
 
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]

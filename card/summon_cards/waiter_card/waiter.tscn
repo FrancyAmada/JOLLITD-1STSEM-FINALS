@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://tr7g8mds7be1"]
+[gd_scene load_steps=36 format=3 uid="uid://tr7g8mds7be1"]
 
 [ext_resource type="Script" path="res://card/summon_cards/waiter_card/waiter.gd" id="1_pb5db"]
 [ext_resource type="Texture2D" uid="uid://vbfd7xeboa33" path="res://assets/crew members/waiter/waiter_walk.png" id="2_h581h"]
@@ -350,6 +350,8 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5venm"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0ulwf"]
 states/Attack/node = SubResource("AnimationNodeAnimation_7rgmf")
 states/Attack/position = Vector2(572, 39)
@@ -357,7 +359,7 @@ states/Death/node = SubResource("AnimationNodeAnimation_rouyb")
 states/Death/position = Vector2(601, 124)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_bp08s")
 states/Move/position = Vector2(447, 90)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_34v7f"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_4qlcx"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_vc1qa"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_gby3n"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_vp4bw")]
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_34v7f"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_4qlcx"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_vc1qa"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_gby3n"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_vp4bw"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_5venm")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mr5g4"]
 radius = 200.0

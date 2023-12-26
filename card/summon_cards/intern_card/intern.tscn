@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdsirpy5yaygd"]
+[gd_scene load_steps=36 format=3 uid="uid://bdsirpy5yaygd"]
 
 [ext_resource type="Script" path="res://card/summon_cards/intern_card/intern.gd" id="1_lc5ln"]
 [ext_resource type="Texture2D" uid="uid://tj38diqb56kn" path="res://assets/crew members/intern/intern_attack.png" id="2_kvbj4"]
@@ -354,6 +354,8 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_66u4s"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kmt1v"]
 states/Attack/node = SubResource("AnimationNodeAnimation_l2m27")
 states/Attack/position = Vector2(534, 94)
@@ -363,7 +365,7 @@ states/End/position = Vector2(703, 153)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_2222o")
 states/Move/position = Vector2(395, 158)
 states/Start/position = Vector2(174, 158)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lg7n5"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_tyivr"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_yfme2"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_qrb26"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_anre3")]
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_lg7n5"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_tyivr"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_yfme2"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_qrb26"), "Death", "End", SubResource("AnimationNodeStateMachineTransition_anre3"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_66u4s")]
 graph_offset = Vector2(0, 35.9649)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0g6pa"]
@@ -386,7 +388,7 @@ shape = SubResource("CircleShape2D_mip77")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -26)
 texture = ExtResource("4_fpkua")
-hframes = 6
+hframes = 10
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_v7d38")]
 sprite = NodePath("../Sprite2D")
@@ -399,9 +401,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
-libraries = {
-"": SubResource("AnimationLibrary_yupo3")
-}
 tree_root = SubResource("AnimationNodeStateMachine_kmt1v")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = -0.0135135

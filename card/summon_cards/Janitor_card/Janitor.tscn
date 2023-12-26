@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://blswln1pv5w4v"]
+[gd_scene load_steps=43 format=3 uid="uid://bodxpefv64rqg"]
 
 [ext_resource type="Script" path="res://card/summon_cards/janitor_card/janitor.gd" id="1_n3k0s"]
 [ext_resource type="Texture2D" uid="uid://cfg65pd3dn61f" path="res://assets/crew members/janitor/janitor_idle.png" id="2_bjy5s"]
@@ -56,28 +56,26 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackComponent")
+tracks/3/path = NodePath("../AttackComponent/AttackParticles:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"deal_attack"
-}]
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackComponent/AttackParticles:emitting")
+tracks/4/path = NodePath("../AttackComponent/AttackArea:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -383,6 +381,8 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a07dg"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vu3hc"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0dq51"]
 states/Attack/node = SubResource("AnimationNodeAnimation_dd2jb")
 states/Attack/position = Vector2(507.5, 42)
@@ -391,7 +391,7 @@ states/Death/position = Vector2(519, 136.5)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_r4w3e")
 states/Move/position = Vector2(389.5, 100.75)
 states/Start/position = Vector2(172, 115.25)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_qoym8"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_1hnd1"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_svi4d"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_a07dg")]
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_qoym8"), "Move", "Attack", SubResource("AnimationNodeStateMachineTransition_1hnd1"), "Attack", "Move", SubResource("AnimationNodeStateMachineTransition_svi4d"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_a07dg"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_vu3hc")]
 graph_offset = Vector2(-28, -7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_svduv"]
@@ -406,37 +406,44 @@ particles_anim_h_frames = 2
 particles_anim_v_frames = 1
 particles_anim_loop = true
 
-[sub_resource type="Curve" id="Curve_dp8to"]
+[sub_resource type="Curve" id="Curve_my3el"]
 max_value = 90.0
 _data = [Vector2(0, 90), 0.0, 0.0, 0, 0, Vector2(0.981928, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_mro3b"]
-curve = SubResource("Curve_dp8to")
+[sub_resource type="CurveTexture" id="CurveTexture_2b10n"]
+curve = SubResource("Curve_my3el")
 
-[sub_resource type="Curve" id="Curve_g1jgs"]
+[sub_resource type="Curve" id="Curve_v3n3m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.795181, 0.684211), -1.74737, -1.74737, 0, 0, Vector2(0.987952, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_eklkd"]
-curve = SubResource("Curve_g1jgs")
+[sub_resource type="CurveTexture" id="CurveTexture_xe7wv"]
+curve = SubResource("Curve_v3n3m")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ewhwn"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xcnmt"]
+emission_shape = 3
+emission_box_extents = Vector3(15, 25, 1)
+particle_flag_align_y = true
 particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 20.0
-angle_max = 90.0
-angle_curve = SubResource("CurveTexture_mro3b")
-direction = Vector3(50, -20, 0)
-spread = 10.0
+spread = 5.0
+gravity = Vector3(-100, 0, 0)
 initial_velocity_min = 100.0
-initial_velocity_max = 100.0
-angular_velocity_min = 10.0
-angular_velocity_max = 10.0
-gravity = Vector3(0, 98, 0)
-scale_curve = SubResource("CurveTexture_eklkd")
+initial_velocity_max = 300.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 5.0
+linear_accel_max = 20.0
+angle_max = 90.0
+angle_curve = SubResource("CurveTexture_2b10n")
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_xe7wv")
 anim_speed_max = 1.0
 anim_offset_max = 1.0
+collision_use_scale = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn7ej"]
+size = Vector2(301.333, 66)
 
 [node name="Janitor" type="CharacterBody2D"]
 z_index = 10
@@ -467,12 +474,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationComponent"]
-libraries = {
-"": SubResource("AnimationLibrary_0akat")
-}
 tree_root = SubResource("AnimationNodeStateMachine_0dq51")
-advance_expression_base_node = NodePath("")
 anim_player = NodePath("../AnimationPlayer")
+advance_expression_base_node = NodePath("")
 parameters/Move/blend_position = -0.0015015
 
 [node name="Shadow" parent="." instance=ExtResource("6_v8ep7")]
@@ -481,6 +485,7 @@ position = Vector2(0, 7.5)
 
 [node name="TargetDetection" parent="." instance=ExtResource("7_t530t")]
 visible = false
+collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_svduv")
@@ -498,19 +503,31 @@ shape = SubResource("RectangleShape2D_bdts8")
 script = ExtResource("10_ff1nr")
 animation_component = NodePath("../AnimationComponent")
 attack_damage = 20.0
-attack_cd = 1.5
+attack_cd = 4.0
 
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackComponent"]
 material = SubResource("CanvasItemMaterial_nl7ds")
-position = Vector2(0, -15)
+position = Vector2(25, 0)
 emitting = false
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_ewhwn")
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_xcnmt")
 texture = ExtResource("11_ljhg8")
 explosiveness = 1.0
+
+[node name="AttackArea" type="Area2D" parent="AttackComponent"]
+collision_layer = 0
+collision_mask = 32
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackComponent/AttackArea"]
+position = Vector2(150, 0)
+shape = SubResource("RectangleShape2D_jn7ej")
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_r1a7t")]
 
 [node name="HealthBar" parent="." instance=ExtResource("12_sv53j")]
 
 [node name="EffectsComponent" parent="." instance=ExtResource("13_y5buh")]
+
+[connection signal="area_entered" from="AttackComponent/AttackArea" to="AttackComponent" method="_on_attack_area_area_entered"]

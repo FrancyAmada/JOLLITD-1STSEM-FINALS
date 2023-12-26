@@ -1,6 +1,6 @@
 extends Summon
 
-class_name Security
+class_name Manager
 
 @onready var attack_component: AttackComponent = $AttackComponent
 @onready var particle: GPUParticles2D = $GPUParticles2D
@@ -24,10 +24,13 @@ func _physics_process(delta):
 	set_target()
 	set_direction()
 	animation_component.update_facing_direction(direction)
-
-	if !on_attack_range and direction != Vector2.ZERO:
+	
+	if gun_drawn and target == null:
+		animation_component.play("Attack_Holster")
+	
+	if !on_attack_range and direction != Vector2.ZERO and !gun_drawn:
 		velocity = direction * speed
-		
+	
 	# Character has stopped and there is an enemy
 	elif on_attack_range and target != null:
 		attack_component.use_attack(target)
@@ -68,3 +71,5 @@ func set_direction():
 func _on_animation_finished(anim_name: String):
 	if anim_name == "Death":
 		queue_free()
+	if anim_name == "Attack_Holster":
+		gun_drawn = false

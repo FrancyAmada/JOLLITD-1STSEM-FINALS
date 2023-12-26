@@ -7,7 +7,7 @@ var player1_profile
 
 
 func _ready():
-	name = "GameMap"
+	self.name = "GameMap"
 	player1_profile = get_player1_profile()
 	if player1_profile != null:
 		set_player(player1, player1_profile)
@@ -49,7 +49,7 @@ func get_player1_profile():
 		return loaded_data
 
 func create_new_profile():
-	var beginner_deck: Array = [Global.available_cards[2]]
+	var beginner_deck: Array = [Global.available_cards[4]]
 	var profile_name = "Administrator"
 	var dict := {
 		"profile": {
