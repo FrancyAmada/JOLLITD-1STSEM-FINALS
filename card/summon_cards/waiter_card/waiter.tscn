@@ -424,6 +424,7 @@ script = ExtResource("9_mr56h")
 animation_component = NodePath("../AnimationComponent")
 attack_damage = 15.0
 attack_cd = 1.5
+base_damage = 15
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_ma5jh")]
 

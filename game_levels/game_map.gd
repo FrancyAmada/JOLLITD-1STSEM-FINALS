@@ -52,7 +52,9 @@ func get_player1_profile():
 		return loaded_data
 
 func create_new_profile():
-	var beginner_deck: Array = [Global.available_cards[7]]
+	var beginner_deck: Array = [Global.available_cards[0], Global.available_cards[1],
+	Global.available_cards[2], Global.available_cards[3], Global.available_cards[4],
+	Global.available_cards[5], Global.available_cards[6], Global.available_cards[7]]
 	var profile_name = "Administrator"
 	var dict := {
 		"profile": {

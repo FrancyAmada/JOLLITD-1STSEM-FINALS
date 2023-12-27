@@ -504,6 +504,7 @@ script = ExtResource("10_ff1nr")
 animation_component = NodePath("../AnimationComponent")
 attack_damage = 20.0
 attack_cd = 4.0
+base_damage = 20
 
 [node name="AttackParticles" type="GPUParticles2D" parent="AttackComponent"]
 material = SubResource("CanvasItemMaterial_nl7ds")

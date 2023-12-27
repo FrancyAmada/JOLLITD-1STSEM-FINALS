@@ -576,6 +576,7 @@ shape = SubResource("RectangleShape2D_4426g")
 [node name="AttackComponent" parent="." instance=ExtResource("7_4bww6")]
 script = ExtResource("8_tsd6e")
 attack_damage = 300.0
+base_damage = 100
 
 [node name="GPUParticles2D" parent="." instance=ExtResource("9_cy3tn")]
 

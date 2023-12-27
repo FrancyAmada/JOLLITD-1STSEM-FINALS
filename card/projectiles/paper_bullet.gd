@@ -15,7 +15,7 @@ var target_direction: Vector2 = Vector2(1, 1)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move(delta)
-	if (global_position.x > 2000 or global_position.x < -500) or (global_position.y > 2700 or global_position.y < -500):
+	if (global_position.x > 5000 or global_position.x < -2300) or (global_position.y > 2200 or global_position.y < -800):
 		queue_free()
 
 func move(delta):
@@ -30,7 +30,7 @@ func initialize(parent_id: int, parent_target, parent_damage: int):
 	animation_player.play("Rotate")
 
 func _on_hit_detector_area_entered(area):
-	if area is HitBoxComponent and area.id != id:
+	if area is HitBoxComponent and area.parent.summon_id != id:
 		hit_target(area.parent)
 
 func hit_target(target_area):

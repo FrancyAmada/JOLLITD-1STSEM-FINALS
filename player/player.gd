@@ -137,8 +137,8 @@ func load_player():
 	
 func _on_area_2d_area_entered(area):
 	if area is HitBoxComponent and area.parent.summon_id != player_id:
-		self.health -= area.parent.attack_component.attack_damage
-		print(self.health)
+		self.health -= area.parent.attack_component.base_damage
+#		print(self.health)
 
 func _on_area_2d_area_exited(area):
 	if area is HitBoxComponent and area.parent.summon_id != player_id:

@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://u01efpo050qe" path="res://card/summon_cards/security_card/security.tscn" id="8_g0vu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjjrb"]
-size = Vector2(4081, 1230.5)
+size = Vector2(3922, 1230.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4672e"]
 size = Vector2(140.25, 1372)
@@ -69,7 +69,7 @@ collision_mask = 8
 script = ExtResource("2_1h6x5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea"]
-position = Vector2(1786.5, 644.75)
+position = Vector2(1707, 644.75)
 shape = SubResource("RectangleShape2D_mjjrb")
 debug_color = Color(0.756863, 0.454902, 0, 0.419608)
 
@@ -88,10 +88,11 @@ shape = SubResource("RectangleShape2D_4672e")
 script = ExtResource("6_x68ul")
 
 [node name="Area2D" type="Area2D" parent="Player2"]
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/Area2D"]
 z_index = 1
-position = Vector2(3966, 652)
+position = Vector2(3782, 672)
 shape = SubResource("RectangleShape2D_8pqj5")
 
 [node name="PlayerArea" type="Area2D" parent="." groups=["player_area"]]
@@ -177,3 +178,5 @@ debug_color = Color(0.943717, 0.221295, 0.230676, 0.42)
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]
 [connection signal="area_entered" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="Player2/Area2D" to="Player2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player2/Area2D" to="Player2" method="_on_area_2d_area_exited"]
