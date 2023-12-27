@@ -19,6 +19,6 @@ func summon(place_position: Vector2):
 		summon_node.add_child(new_bucketcannon)
 		new_bucketcannon.set_summon_id(player_id)
 #		print_debug("Player ID: ", player_id, " Summon:", new_waiter)
-		new_bucketcannon.global_position = place_position + Vector2(randi_range(-50, 50), randi_range(-50, 50))
+		new_bucketcannon.global_position = place_position
 		
 

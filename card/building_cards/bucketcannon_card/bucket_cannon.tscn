@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c31n2oxql2iuy"]
+[gd_scene load_steps=28 format=3 uid="uid://c31n2oxql2iuy"]
 
 [ext_resource type="Script" path="res://card/building_cards/bucketcannon_card/bucket_cannon.gd" id="1_u6mlp"]
 [ext_resource type="Texture2D" uid="uid://tmg222e8pvyq" path="res://assets/base_towers/Bucket-Cannon (base).png" id="2_ul50y"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdhwmtisyk8u5" path="res://components/character_components/target_detection_component.tscn" id="6_pi3w1"]
 [ext_resource type="PackedScene" uid="uid://c1tq8642tjcmw" path="res://components/character_components/attack_component.tscn" id="7_p0r5s"]
 [ext_resource type="PackedScene" uid="uid://da1eldb6ik7uq" path="res://components/tower_smoke.tscn" id="7_wgmu1"]
+[ext_resource type="Script" path="res://card/building_cards/bucketcannon_card/bucket_cannon_attack.gd" id="8_voi2h"]
 
 [sub_resource type="Animation" id="Animation_ts0l3"]
 resource_name = "Idle"
@@ -36,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1), Vector2(1, 1)]
+"values": [Vector2(1.5, 1.5), Vector2(1.6, 1.5), Vector2(1.5, 1.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -112,7 +113,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 0.9), Vector2(1, 1)]
+"values": [Vector2(1.5, 1.5), Vector2(1.7, 1.4), Vector2(1.5, 1.5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -126,56 +127,19 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, -16), Vector2(0, -12), Vector2(0, -16)]
 }
-
-[sub_resource type="Animation" id="Animation_8ndcv"]
-resource_name = "Destroy"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../TowerSmoke:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AttackComponent")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../HealthBar:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Shadow:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [],
+"method": &"deal_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n1p27"]
@@ -202,7 +166,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1.5, 1.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -289,16 +253,67 @@ tracks/8/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_8ndcv"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TowerSmoke:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HealthBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Shadow:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1wnyl"]
 _data = {
-"Destroy": SubResource("Animation_8ndcv"),
+"Death": SubResource("Animation_8ndcv"),
 "Idle": SubResource("Animation_ts0l3"),
 "RESET": SubResource("Animation_n1p27"),
 "Shoot": SubResource("Animation_aujvg")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lcpq8"]
-animation = &"Destroy"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ksb8"]
+animation = &"Death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rat7l"]
 animation = &"Idle"
@@ -308,32 +323,37 @@ animation = &"Shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4cq3b"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u5j3m"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdicw"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p1qhj"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hai03"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ocksi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a1awc"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vy4mi"]
-states/Destroy/node = SubResource("AnimationNodeAnimation_lcpq8")
-states/Destroy/position = Vector2(636, 88)
+states/Death/node = SubResource("AnimationNodeAnimation_0ksb8")
+states/Death/position = Vector2(616, 90)
 states/Idle/node = SubResource("AnimationNodeAnimation_rat7l")
 states/Idle/position = Vector2(377, 99)
 states/Shoot/node = SubResource("AnimationNodeAnimation_qnrcl")
-states/Shoot/position = Vector2(507, 46)
-transitions = ["Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_4cq3b"), "Shoot", "Destroy", SubResource("AnimationNodeStateMachineTransition_u5j3m"), "Idle", "Destroy", SubResource("AnimationNodeStateMachineTransition_gdicw"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_p1qhj")]
+states/Shoot/position = Vector2(506, 19)
+transitions = ["Idle", "Shoot", SubResource("AnimationNodeStateMachineTransition_4cq3b"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_p1qhj"), "Idle", "Death", SubResource("AnimationNodeStateMachineTransition_hai03"), "Shoot", "Death", SubResource("AnimationNodeStateMachineTransition_ocksi"), "Shoot", "Idle", SubResource("AnimationNodeStateMachineTransition_a1awc")]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1dni"]
 size = Vector2(66.3333, 67)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg8nt"]
-radius = 1000.0
+radius = 1600.0
 
 [node name="BucketCannon" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_u6mlp")
-attack_range = 600
+health = 400.0
+attack_range = 1300
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -363,12 +383,15 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_g1dni")
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_pi3w1")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mg8nt")
 
-[node name="AttackComponent" parent="." instance=ExtResource("7_p0r5s")]
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_component") instance=ExtResource("7_p0r5s")]
+script = ExtResource("8_voi2h")
+animation_component = NodePath("../AnimationComponent")
+attack_damage = 80.0
+attack_cd = 1.5
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
 

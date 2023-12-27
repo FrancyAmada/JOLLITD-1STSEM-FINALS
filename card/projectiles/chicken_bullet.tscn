@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt207ufh7abl"]
+[gd_scene load_steps=9 format=3 uid="uid://cd0byf3aqv7pg"]
 
-[ext_resource type="Texture2D" uid="uid://cfm4ecbxd55nb" path="res://assets/crew members/chef/pan.png" id="1_2pf4t"]
-[ext_resource type="Script" path="res://card/projectiles/flying_pan_bullet.gd" id="1_vld4o"]
+[ext_resource type="Script" path="res://card/projectiles/chicken_bullet.gd" id="1_kp8o7"]
+[ext_resource type="Texture2D" uid="uid://xlh6f3a0wyob" path="res://assets/tower_projectiles/Chicken.png" id="2_wpxry"]
+[ext_resource type="PackedScene" uid="uid://brkqxkg4ytilp" path="res://components/bullet_smoke.tscn" id="3_quvu1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_efiwv"]
-radius = 8.0
-
-[sub_resource type="Gradient" id="Gradient_xp10u"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+[sub_resource type="CircleShape2D" id="CircleShape2D_177e0"]
+radius = 11.0454
 
 [sub_resource type="Animation" id="Animation_wm6kb"]
 resource_name = "Rotate"
@@ -111,45 +109,30 @@ _data = {
 "Rotate": SubResource("Animation_wm6kb")
 }
 
-[node name="FlyingPanBullet" type="Node2D"]
+[node name="ChickenBullet" type="Node2D"]
 z_index = 50
-scale = Vector2(3, 3)
-script = ExtResource("1_vld4o")
-speed = 500.0
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_kp8o7")
+speed = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.5, -0.5)
+position = Vector2(-3, 1.06581e-14)
 scale = Vector2(1.2, 1.2)
-texture = ExtResource("1_2pf4t")
+texture = ExtResource("2_wpxry")
 
 [node name="HitDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 96
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
-shape = SubResource("CircleShape2D_efiwv")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-z_index = 1
-emitting = false
-amount = 10
-speed_scale = 1.5
-emission_shape = 1
-emission_sphere_radius = 60.0
-direction = Vector2(0, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 15.0
-linear_accel_max = 10.0
-scale_amount_min = 6.0
-scale_amount_max = 10.0
-color_ramp = SubResource("Gradient_xp10u")
+shape = SubResource("CircleShape2D_177e0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_r64j5")
 }
+
+[node name="BulletSmoke" parent="." instance=ExtResource("3_quvu1")]
 
 [connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
