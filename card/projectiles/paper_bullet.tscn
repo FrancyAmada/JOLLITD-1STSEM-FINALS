@@ -1,0 +1,139 @@
+[gd_scene load_steps=10 format=3 uid="uid://t51dobo1ia45"]
+
+[ext_resource type="Texture2D" uid="uid://c5s3yvowf34gq" path="res://assets/paper.png" id="1_addal"]
+[ext_resource type="Script" path="res://card/projectiles/paper_bullet.gd" id="1_qtp2d"]
+[ext_resource type="PackedScene" uid="uid://brkqxkg4ytilp" path="res://components/bullet_smoke.tscn" id="2_3uh77"]
+[ext_resource type="Texture2D" uid="uid://p64vvis0xcth" path="res://assets/torn_paper.png" id="3_r2s1m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eag1r"]
+radius = 14.0
+
+[sub_resource type="Animation" id="Animation_wm6kb"]
+resource_name = "Rotate"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 7.85398]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BulletSmoke:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2wg33"]
+resource_name = "Explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BulletSmoke:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1nx3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BulletSmoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r64j5"]
+_data = {
+"Explode": SubResource("Animation_2wg33"),
+"RESET": SubResource("Animation_1nx3y"),
+"Rotate": SubResource("Animation_wm6kb")
+}
+
+[node name="PaperBullet" type="Node2D"]
+z_index = 50
+scale = Vector2(2, 2)
+script = ExtResource("1_qtp2d")
+speed = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 1.06581e-14)
+texture = ExtResource("1_addal")
+
+[node name="HitDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 96
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetector"]
+shape = SubResource("CircleShape2D_eag1r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r64j5")
+}
+
+[node name="BulletSmoke" parent="." instance=ExtResource("2_3uh77")]
+texture = ExtResource("3_r2s1m")
+
+[connection signal="area_entered" from="HitDetector" to="." method="_on_hit_detector_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

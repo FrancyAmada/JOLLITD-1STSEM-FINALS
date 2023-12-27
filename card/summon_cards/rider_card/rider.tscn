@@ -526,6 +526,8 @@ color_ramp = SubResource("GradientTexture1D_mkbwo")
 [node name="Rider" type="CharacterBody2D"]
 z_index = 10
 scale = Vector2(3, 3)
+collision_layer = 32
+collision_mask = 65
 script = ExtResource("1_x5hvn")
 normal_speed = 350.0
 attack_range = 60

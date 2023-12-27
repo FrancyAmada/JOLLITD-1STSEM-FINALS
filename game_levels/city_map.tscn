@@ -19,7 +19,7 @@ size = Vector2(1411, 1233)
 
 [node name="CityMap" type="Node2D"]
 script = ExtResource("1_ju0fv")
-boundary = Array[int]([-100, 640, 250, 800])
+boundary = Array[int]([-100, 640, 250, 1600])
 
 [node name="TileMaps" type="Node" parent="."]
 
@@ -86,40 +86,40 @@ z_as_relative = false
 y_sort_enabled = true
 
 [node name="Waiter" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2220, 684)
+position = Vector2(2504, 641)
 
 [node name="Waiter2" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2219, 837)
+position = Vector2(2503, 794)
 
 [node name="Waiter3" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2187, 498)
+position = Vector2(2471, 455)
 
 [node name="Waiter4" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2069, 1236)
+position = Vector2(2353, 1193)
 
 [node name="Intern" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(2055, 343)
+position = Vector2(2339, 300)
 
 [node name="Intern2" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(1979, 243)
+position = Vector2(2263, 200)
 
 [node name="Janitor" parent="CardSummons" instance=ExtResource("6_clxf6")]
-position = Vector2(2127, 587)
+position = Vector2(2411, 544)
 
 [node name="Janitor2" parent="CardSummons" instance=ExtResource("6_clxf6")]
-position = Vector2(2172, 1200)
+position = Vector2(2456, 1157)
 
 [node name="Manager" parent="CardSummons" instance=ExtResource("7_ma5wr")]
-position = Vector2(2098, 845)
+position = Vector2(2967, 788)
 
 [node name="Manager2" parent="CardSummons" instance=ExtResource("7_ma5wr")]
-position = Vector2(2110, 718)
+position = Vector2(2979, 661)
 
 [node name="Security" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2035, 1017)
+position = Vector2(2319, 974)
 
 [node name="Security2" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2002, 457)
+position = Vector2(2286, 414)
 
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]

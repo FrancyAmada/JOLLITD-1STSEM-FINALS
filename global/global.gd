@@ -10,6 +10,7 @@ extends Node
 	preload("res://card/summon_cards/security_card/security_card.tscn"),
 	preload("res://card/summon_cards/chef_card/chef_card.tscn"),
 	preload("res://card/summon_cards/rider_card/rider_card.tscn"),
+	preload("res://card/summon_cards/hr_agent_card/hr_agent_card.tscn"),
 	
 	# Towers
 	preload("res://card/building_cards/bucketcannon_card/bucket_cannon_card.tscn"),
