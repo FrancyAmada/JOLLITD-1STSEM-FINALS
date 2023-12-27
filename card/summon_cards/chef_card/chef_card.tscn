@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6rbghvj6o8yc"]
+
+[ext_resource type="Texture2D" uid="uid://b5pwybo4dmddu" path="res://assets/base_cards/PicsArt_11-19-11.15.14.png" id="1_5cwg4"]
+[ext_resource type="Script" path="res://card/summon_cards/chef_card/chef_card.gd" id="1_wp7op"]
+[ext_resource type="PackedScene" uid="uid://pcq64cwv0hvu" path="res://card/card_animation.tscn" id="2_fa1oe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xb502"]
+size = Vector2(106, 148)
+
+[node name="ChefCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_wp7op")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.01386, 1)
+shape = SubResource("RectangleShape2D_xb502")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_5cwg4")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("2_fa1oe")]
