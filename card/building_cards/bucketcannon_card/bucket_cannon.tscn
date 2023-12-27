@@ -350,6 +350,7 @@ size = Vector2(66.3333, 67)
 radius = 1600.0
 
 [node name="BucketCannon" type="Node2D"]
+z_index = 10
 scale = Vector2(3, 3)
 script = ExtResource("1_u6mlp")
 health = 400.0

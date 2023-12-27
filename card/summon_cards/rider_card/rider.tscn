@@ -524,6 +524,7 @@ scale_max = 5.0
 color_ramp = SubResource("GradientTexture1D_mkbwo")
 
 [node name="Rider" type="CharacterBody2D"]
+z_index = 10
 scale = Vector2(3, 3)
 script = ExtResource("1_x5hvn")
 normal_speed = 350.0

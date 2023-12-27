@@ -1,6 +1,6 @@
 extends Node2D
 
-var game_map = "res://game_levels/game_map.tscn"
+var game_map = "res://game_levels/city_map.tscn"
 
 func _ready():
 	pass

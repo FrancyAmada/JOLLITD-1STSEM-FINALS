@@ -14,7 +14,7 @@ script = ExtResource("1_qrn17")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_28u4a")]
 position = Vector2(708, 395)
-zoom = Vector2(0.65, 0.65)
+zoom = Vector2(0.45, 0.45)
 
 [node name="Mouse" type="Area2D" parent="."]
 collision_layer = 8
