@@ -1,11 +1,16 @@
 extends Summon
 
-class_name Security
+class_name Rider
 
-@onready var attack_component: AttackComponent = $AttackComponent
 @onready var particle: GPUParticles2D = $GPUParticles2D
+@onready var attack_component: AttackComponent = $AttackComponent
 
 @onready var target = null
+@onready var max_health: float = health
+
+var has_motor: bool = true
+
+var gun_drawn: bool = false
 
 func _ready():
 	set_healthbar()
@@ -16,19 +21,21 @@ func _ready():
 func _physics_process(delta):
 	effects_component.process(delta)
 #	print(" Value:", get_node("Sprite2D").modulate, "")
-	attack_component.process(delta)
 	target_detection.process(delta)
 #	print(name, " ID:", summon_id, " Target:", target)
 	set_target()
 	set_direction()
 	animation_component.update_facing_direction(direction)
-
+	
+	if (health < max_health / 2) and has_motor:
+		explode()
+	
 	if !on_attack_range and direction != Vector2.ZERO:
 		velocity = direction * speed
 		
 	# Character has stopped and there is an enemy
-	elif on_attack_range and target != null:
-		attack_component.use_attack(target)
+	elif on_attack_range and target != null and has_motor:
+		explode()
 		direction = Vector2.ZERO
 		velocity = Vector2.ZERO
 	else:
@@ -40,7 +47,8 @@ func _physics_process(delta):
 	update_healthbar()
 
 func set_target():
-	target = target_detection.get_target()
+	if has_motor:
+		target = target_detection.get_target()
 #	if target != null:
 #		print_debug(target, " direction: ", direction)
 
@@ -66,3 +74,9 @@ func set_direction():
 func _on_animation_finished(anim_name: String):
 	if anim_name == "Death":
 		queue_free()
+
+func explode():
+	normal_speed = 200
+	has_motor = false
+	animation_component.play("Explode")
+	attack_component.explode(target_detection.targets_list)

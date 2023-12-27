@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://nv0jy7y68bdc"]
+
+[ext_resource type="Script" path="res://card/building_cards/Building.gd" id="1_vxvm5"]
+
+[node name="Building" type="Node2D"]
+script = ExtResource("1_vxvm5")

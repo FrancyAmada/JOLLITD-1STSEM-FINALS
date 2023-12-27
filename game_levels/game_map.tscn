@@ -98,7 +98,7 @@ position = Vector2(2098, 845)
 position = Vector2(2110, 718)
 
 [node name="Security" parent="CardSummons" instance=ExtResource("10_qn5ok")]
-position = Vector2(1997, 916)
+position = Vector2(2035, 1017)
 
 [node name="Security2" parent="CardSummons" instance=ExtResource("10_qn5ok")]
 position = Vector2(2002, 457)

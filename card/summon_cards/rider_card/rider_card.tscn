@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq6sssj5jt5a1"]
+
+[ext_resource type="Script" path="res://card/summon_cards/rider_card/rider_card.gd" id="1_smdst"]
+[ext_resource type="Texture2D" uid="uid://b5pwybo4dmddu" path="res://assets/base_cards/PicsArt_11-19-11.15.14.png" id="2_wm8ac"]
+[ext_resource type="PackedScene" uid="uid://pcq64cwv0hvu" path="res://card/card_animation.tscn" id="3_j11px"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gxo0"]
+size = Vector2(103, 147)
+
+[node name="RiderCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_smdst")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_wm8ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5gxo0")
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_j11px")]
