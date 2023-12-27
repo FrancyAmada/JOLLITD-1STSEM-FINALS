@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=12 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
 [ext_resource type="Texture2D" uid="uid://bvb2ptot5jry5" path="res://assets/Bone.png" id="2_4ue32"]
@@ -7,10 +7,42 @@
 [ext_resource type="Texture2D" uid="uid://dgtlvsphqrh8u" path="res://assets/bones_background.png" id="5_v5s3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
-size = Vector2(1266, 485)
+size = Vector2(1266, 445)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqhir"]
 radius = 8.06226
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u404"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 5.0
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oanex"]
+bg_color = Color(0.0470588, 0, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hna4y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 5.0
+shadow_offset = Vector2(-5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64etp"]
+bg_color = Color(0.560784, 0, 0.0980392, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_ar28p")
@@ -22,7 +54,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceArea"]
-position = Vector2(640, 253.5)
+position = Vector2(640, 273.5)
 shape = SubResource("RectangleShape2D_06sgl")
 
 [node name="Mouse" type="Area2D" parent="." groups=["mouse"]]
@@ -120,6 +152,50 @@ z_index = -55
 position = Vector2(278, 628)
 scale = Vector2(5, 5)
 texture = ExtResource("5_v5s3g")
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 594.0
+offset_bottom = 34.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6u404")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oanex")
+max_value = 500.0
+value = 50.0
+show_percentage = false
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+offset_left = 687.0
+offset_top = 7.0
+offset_right = 1273.0
+offset_bottom = 34.0
+theme_override_styles/background = SubResource("StyleBoxFlat_hna4y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_64etp")
+max_value = 500.0
+value = 50.0
+fill_mode = 1
+show_percentage = false
+
+[node name="PlayerName" type="Label" parent="."]
+offset_left = 28.0
+offset_top = 40.0
+offset_right = 555.0
+offset_bottom = 85.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Player"
+
+[node name="EnemyName" type="Label" parent="."]
+offset_left = 734.0
+offset_top = 40.0
+offset_right = 1261.0
+offset_bottom = 86.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Enemy"
+horizontal_alignment = 2
 
 [connection signal="area_entered" from="PlaceArea" to="." method="_on_place_area_area_entered"]
 [connection signal="area_exited" from="PlaceArea" to="." method="_on_place_area_area_exited"]

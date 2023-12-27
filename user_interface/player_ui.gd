@@ -7,6 +7,10 @@ class_name PlayerUI
 @onready var bones_label: Label = $BonesLabel
 @onready var deck_label: Label = $DeckLabel
 @onready var deck_bg: Sprite2D = $DeckBackground
+@onready var player_name_label: Label = $PlayerName
+@onready var enemy_name_label: Label = $EnemyName
+@onready var player_health_bar: ProgressBar = $PlayerHealthBar
+@onready var enemy_health_bar: ProgressBar = $EnemyHealthBar
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse
@@ -113,3 +117,15 @@ func set_bones_label(amount: int):
 	
 func set_deck_label(amount: int):
 	deck_label.text = str(amount)
+
+func update_healthbars(player_health: float, enemy_health: float):
+	player_health_bar.value = player_health
+	enemy_health_bar.value = enemy_health
+	
+func set_healthbars(player_health: float, enemy_health: float):
+	player_health_bar.max_value = player_health
+	enemy_health_bar.max_value = enemy_health
+	
+func update_namelabels(player_name: String, enemy_name: String):
+	player_name_label.text = player_name
+	enemy_name_label.text = enemy_name

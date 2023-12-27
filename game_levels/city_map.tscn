@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://capnbgps1m002"]
+[gd_scene load_steps=16 format=3 uid="uid://capnbgps1m002"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_ju0fv"]
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="2_1h6x5"]
@@ -8,11 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://tr7g8mds7be1" path="res://card/summon_cards/waiter_card/waiter.tscn" id="4_51pd0"]
 [ext_resource type="PackedScene" uid="uid://bdsirpy5yaygd" path="res://card/summon_cards/intern_card/intern.tscn" id="5_mqjk1"]
 [ext_resource type="PackedScene" uid="uid://bodxpefv64rqg" path="res://card/summon_cards/janitor_card/Janitor.tscn" id="6_clxf6"]
+[ext_resource type="Script" path="res://computer_ai/computer_easy.gd" id="6_x68ul"]
 [ext_resource type="PackedScene" uid="uid://cp8vxxdygkpy2" path="res://card/summon_cards/manager_card/manager.tscn" id="7_ma5wr"]
 [ext_resource type="PackedScene" uid="uid://u01efpo050qe" path="res://card/summon_cards/security_card/security.tscn" id="8_g0vu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjjrb"]
 size = Vector2(4081, 1230.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4672e"]
+size = Vector2(140.25, 1372)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pqj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1avy"]
 size = Vector2(1411, 1233)
@@ -61,6 +67,22 @@ debug_color = Color(0.756863, 0.454902, 0, 0.419608)
 [node name="Player1" parent="." instance=ExtResource("3_2h0hp")]
 position = Vector2(420, 265)
 
+[node name="Area2D" type="Area2D" parent="Player1"]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1/Area2D"]
+z_index = 1
+position = Vector2(-814, 364)
+shape = SubResource("RectangleShape2D_4672e")
+
+[node name="Player2" type="Node2D" parent="."]
+script = ExtResource("6_x68ul")
+
+[node name="Area2D" type="Area2D" parent="Player2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2/Area2D"]
+shape = SubResource("RectangleShape2D_8pqj5")
+
 [node name="PlayerArea" type="Area2D" parent="." groups=["player_area"]]
 z_index = 1
 position = Vector2(429, 266)
@@ -92,19 +114,19 @@ position = Vector2(2504, 641)
 position = Vector2(2503, 794)
 
 [node name="Waiter3" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2471, 455)
+position = Vector2(-65, 410)
 
 [node name="Waiter4" parent="CardSummons" instance=ExtResource("4_51pd0")]
 position = Vector2(2353, 1193)
 
 [node name="Intern" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(2339, 300)
+position = Vector2(-114, 548)
 
 [node name="Intern2" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(2263, 200)
+position = Vector2(-86, 1161)
 
 [node name="Janitor" parent="CardSummons" instance=ExtResource("6_clxf6")]
-position = Vector2(2411, 544)
+position = Vector2(-32, 694)
 
 [node name="Janitor2" parent="CardSummons" instance=ExtResource("6_clxf6")]
 position = Vector2(2456, 1157)
@@ -116,10 +138,12 @@ position = Vector2(2967, 788)
 position = Vector2(2979, 661)
 
 [node name="Security" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2319, 974)
+position = Vector2(-60, 1019)
 
 [node name="Security2" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2286, 414)
+position = Vector2(-61, 865)
 
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]
+[connection signal="area_entered" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_exited"]

@@ -15,6 +15,9 @@ var direction: Vector2 = Vector2.ZERO
 @onready var current_cards: Node = player_ui.get_node("Cards")
 @onready var mouse: Area2D = $Mouse
 
+@export var health: int = 500
+
+
 # Cards Deck
 var deck: Array
 # current cards
@@ -31,13 +34,17 @@ var bones: int = 4
 
 var time_count: float = 0.0
 
+var updated: bool = false
+
 ## Called when the node enters the scene tree for the first time.
 func _ready():
 #	get_cards()
 #	print_debug(cards)
+	game_map = get_parent()
 	player_ui.set_bones_label(bones)
 
 func _physics_process(delta):
+	player_ui.update_healthbars(health, game_map.player2.health)
 	direction = Input.get_vector("left", "right", "up", "down")
 	
 	if check_on_boundary():
@@ -73,10 +80,15 @@ func _physics_process(delta):
 	time_count += delta
 	
 func _process(delta):
+	if !updated:
+		player_ui.set_healthbars(self.health, game_map.player2.health)
+		updated = true
+		
 	mouse.global_position = get_global_mouse_position()
 	player_ui.process(delta)
 	player_ui.set_bones_label(bones)
 	player_ui.set_deck_label(cards.size())
+	player_ui.update_healthbars(self.health, game_map.player2.health)
 
 func _input(event):
 	player_ui.input(event)
@@ -123,3 +135,11 @@ func load_player():
 	for i in range(5):
 		get_card()
 	
+func _on_area_2d_area_entered(area):
+	if area is HitBoxComponent and area.parent.summon_id != player_id:
+		self.health -= area.parent.attack_component.attack_damage
+		print(self.health)
+
+func _on_area_2d_area_exited(area):
+	if area is HitBoxComponent and area.parent.summon_id != player_id:
+		area.parent.queue_free()
