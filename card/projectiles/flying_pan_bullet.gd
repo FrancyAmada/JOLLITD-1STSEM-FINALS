@@ -27,6 +27,7 @@ func initialize(parent_id: int, parent_target, parent_damage: int):
 	id = parent_id
 	target = parent_target
 	damage = parent_damage
+	animation_player.play("Rotate")
 
 func _on_hit_detector_area_entered(area):
 	if area is HitBoxComponent and area.id != id:
@@ -39,5 +40,4 @@ func hit_target(target_area):
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Explode":
-		animation_player.play_backwards("Explode")
 		queue_free()

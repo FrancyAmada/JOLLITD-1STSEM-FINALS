@@ -444,5 +444,7 @@ attack_cd = 1.0
 [node name="GPUParticles2D" parent="." instance=ExtResource("6_djcrn")]
 
 [node name="HealthBar" parent="." instance=ExtResource("12_pjdye")]
+offset_top = -42.3333
+offset_bottom = -36.3333
 
 [node name="EffectsComponent" parent="." instance=ExtResource("13_sj6vo")]

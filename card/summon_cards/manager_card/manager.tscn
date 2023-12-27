@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cp8vxxdygkpy2"]
+[gd_scene load_steps=43 format=3 uid="uid://cp8vxxdygkpy2"]
 
 [ext_resource type="Script" path="res://card/summon_cards/manager_card/Manager.gd" id="1_x62q4"]
 [ext_resource type="Texture2D" uid="uid://cvsnwypqpgpbg" path="res://assets/crew members/manager/manager_idle.png" id="2_anhi1"]
@@ -454,18 +454,22 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0qqin"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lw1xd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m6wxd"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b3g8r"]
 states/Attack_Draw/node = SubResource("AnimationNodeAnimation_2n4lm")
 states/Attack_Draw/position = Vector2(422, 29)
 states/Attack_Holster/node = SubResource("AnimationNodeAnimation_qx8a0")
-states/Attack_Holster/position = Vector2(655, 92)
+states/Attack_Holster/position = Vector2(583, 84)
 states/Attack_Shoot/node = SubResource("AnimationNodeAnimation_xuk4x")
-states/Attack_Shoot/position = Vector2(593, 29)
+states/Attack_Shoot/position = Vector2(719, 29)
 states/Death/node = SubResource("AnimationNodeAnimation_icha5")
 states/Death/position = Vector2(712, 170)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_qid1x")
 states/Move/position = Vector2(422, 143)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_l1lsw"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_h30y6"), "Move", "Attack_Draw", SubResource("AnimationNodeStateMachineTransition_k8cp6"), "Attack_Draw", "Attack_Shoot", SubResource("AnimationNodeStateMachineTransition_vqu3c"), "Attack_Shoot", "Attack_Holster", SubResource("AnimationNodeStateMachineTransition_e28tm"), "Attack_Holster", "Move", SubResource("AnimationNodeStateMachineTransition_ma0ms"), "Attack_Draw", "Attack_Holster", SubResource("AnimationNodeStateMachineTransition_0qqin")]
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_l1lsw"), "Move", "Death", SubResource("AnimationNodeStateMachineTransition_h30y6"), "Move", "Attack_Draw", SubResource("AnimationNodeStateMachineTransition_k8cp6"), "Attack_Draw", "Attack_Shoot", SubResource("AnimationNodeStateMachineTransition_vqu3c"), "Attack_Shoot", "Attack_Holster", SubResource("AnimationNodeStateMachineTransition_e28tm"), "Attack_Holster", "Move", SubResource("AnimationNodeStateMachineTransition_ma0ms"), "Attack_Draw", "Attack_Holster", SubResource("AnimationNodeStateMachineTransition_0qqin"), "Attack_Holster", "Death", SubResource("AnimationNodeStateMachineTransition_lw1xd"), "Attack_Shoot", "Death", SubResource("AnimationNodeStateMachineTransition_m6wxd")]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bjupy"]
 radius = 700.0
@@ -534,5 +538,7 @@ attack_cd = 0.3
 [node name="GPUParticles2D" parent="." instance=ExtResource("9_4hqye")]
 
 [node name="HealthBar" parent="." instance=ExtResource("10_ya5f5")]
+offset_top = -42.6667
+offset_bottom = -36.6667
 
 [node name="EffectsComponent" parent="." instance=ExtResource("13_cai6j")]

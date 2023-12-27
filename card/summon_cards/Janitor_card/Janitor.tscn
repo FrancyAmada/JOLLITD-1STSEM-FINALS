@@ -528,6 +528,8 @@ shape = SubResource("RectangleShape2D_jn7ej")
 [node name="GPUParticles2D" parent="." instance=ExtResource("11_r1a7t")]
 
 [node name="HealthBar" parent="." instance=ExtResource("12_sv53j")]
+offset_top = -42.6667
+offset_bottom = -36.6667
 
 [node name="EffectsComponent" parent="." instance=ExtResource("13_y5buh")]
 

@@ -1,6 +1,6 @@
 extends Summon
 
-class_name chef
+class_name Chef
 
 @onready var attack_component: AttackComponent = $AttackComponent
 @onready var particle: GPUParticles2D = $GPUParticles2D

@@ -7,4 +7,5 @@ extends Node
 	preload("res://card/summon_cards/janitor_card/janitor_card.tscn"),
 	preload("res://card/summon_cards/manager_card/manager_card.tscn"),
 	preload("res://card/summon_cards/security_card/security_card.tscn"),
+	preload("res://card/summon_cards/chef_card/chef_card.tscn"),
 ]
