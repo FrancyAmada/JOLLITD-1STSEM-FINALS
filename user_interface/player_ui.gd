@@ -21,6 +21,8 @@ var mouse_is_in_player_area: bool = false
 var is_on_card: Card = null
 var grabbed_card: Card = null
 
+var paused: bool = false
+
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 #	for card in cards_node.get_children():
@@ -68,7 +70,7 @@ func set_cards_positions():
 func input(event):
 	if event is InputEventMouseButton:
 #		print_debug("Mouse is at position: ", event.position)
-		if is_on_card != null and !is_on_card.from_bag and grabbed_card == null:
+		if is_on_card != null and !is_on_card.from_bag and grabbed_card == null and !paused:
 			grabbed_card = is_on_card
 			is_on_card = null
 			grabbed_card.grab()
@@ -129,3 +131,11 @@ func set_healthbars(player_health: float, enemy_health: float):
 func update_namelabels(player_name: String, enemy_name: String):
 	player_name_label.text = player_name
 	enemy_name_label.text = enemy_name
+
+func _on_button_pressed():
+	if paused:
+		paused = false
+		player.pause_pressed()
+	else:
+		paused = true
+		player.pause_pressed()

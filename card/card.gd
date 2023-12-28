@@ -60,3 +60,11 @@ func set_id(id: int):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "get_from_bag":
 		can_grab = true
+
+func place_auto(place_position:Vector2):
+	summon(place_position)
+	queue_free()
+	
+func summon(place_position:Vector2):
+	pass
+	

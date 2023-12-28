@@ -483,7 +483,8 @@ scale = Vector2(3, 3)
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_x62q4")
-attack_range = 600
+health = 40.0
+attack_range = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bdo5b")

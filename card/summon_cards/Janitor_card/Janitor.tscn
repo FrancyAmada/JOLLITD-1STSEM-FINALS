@@ -451,7 +451,7 @@ scale = Vector2(3, 3)
 collision_layer = 32
 script = ExtResource("1_n3k0s")
 normal_speed = 120.0
-health = 200.0
+health = 80.0
 attack_range = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

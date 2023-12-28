@@ -14,7 +14,7 @@ func place(place_position: Vector2):
 		return_to_position()
 		
 func summon(place_position: Vector2):
-	for i in range(2):
+	for i in range(1):
 		var new_hr_agent = hr_agent.instantiate()
 		summon_node.add_child(new_hr_agent)
 		new_hr_agent.set_summon_id(player_id)

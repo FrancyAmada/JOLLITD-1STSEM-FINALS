@@ -392,7 +392,7 @@ scale = Vector2(3, 3)
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_lc5ln")
-normal_speed = 120.0
+normal_speed = 150.0
 health = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

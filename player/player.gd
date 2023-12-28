@@ -17,6 +17,8 @@ var direction: Vector2 = Vector2.ZERO
 
 @export var health: int = 500
 
+var summon_node: Node2D
+var projectiles_node: Node2D
 
 # Cards Deck
 var deck: Array
@@ -28,9 +30,9 @@ var card_timer: float = 0.0
 var card_cooldown: float = 2.5
 
 # Bone production per second
-var bones_production: float = 2
+var bones_production: float = 1
 var bones_float: float = 0.0
-var bones: int = 4
+var bones: int = 15
 
 var time_count: float = 0.0
 
@@ -42,6 +44,8 @@ func _ready():
 #	print_debug(cards)
 	game_map = get_parent()
 	player_ui.set_bones_label(bones)
+	summon_node = get_parent().get_node("CardSummons")
+	projectiles_node = get_parent().get_node("Projectiles")
 
 func _physics_process(delta):
 	player_ui.update_healthbars(health, game_map.player2.health)
@@ -49,7 +53,7 @@ func _physics_process(delta):
 	
 	if check_on_boundary():
 		self.global_position += direction * speed
-		
+	
 	# Check if player just placed a card
 	if placed_card:
 		card_timer += delta
@@ -67,7 +71,7 @@ func _physics_process(delta):
 			print(player_ui.cards_node.get_child_count())
 	
 	# Bone Production
-	if time_count >= 1:
+	if time_count >= 1 and !player_ui.paused:
 		time_count = 0
 		bones_float += bones_production
 		if bones_float >= 1.0 and bones < 30:
@@ -84,8 +88,9 @@ func _process(delta):
 		player_ui.set_healthbars(self.health, game_map.player2.health)
 		updated = true
 		
-	mouse.global_position = get_global_mouse_position()
-	player_ui.process(delta)
+	if !player_ui.paused:
+		mouse.global_position = get_global_mouse_position()
+		player_ui.process(delta)
 	player_ui.set_bones_label(bones)
 	player_ui.set_deck_label(cards.size())
 	player_ui.update_healthbars(self.health, game_map.player2.health)
@@ -143,3 +148,10 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if area is HitBoxComponent and area.parent.summon_id != player_id:
 		area.parent.queue_free()
+
+func pause_pressed():
+	for summon in summon_node.get_children():
+		summon.set_physics_process(!player_ui.paused)
+	for projectile in projectiles_node.get_children():
+		projectile.set_physics_process(!player_ui.paused)
+		

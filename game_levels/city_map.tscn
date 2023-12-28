@@ -1,16 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://capnbgps1m002"]
+[gd_scene load_steps=14 format=3 uid="uid://capnbgps1m002"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_ju0fv"]
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="2_1h6x5"]
 [ext_resource type="PackedScene" uid="uid://b8j1ghryldwpu" path="res://tile_map/city_terrain_tilemap.tscn" id="2_xu1pi"]
 [ext_resource type="PackedScene" uid="uid://cd2334k0atlms" path="res://tile_map/city_buildings_tilemap.tscn" id="3_0gis4"]
 [ext_resource type="PackedScene" uid="uid://bmqc6d4c3tqt4" path="res://player/player.tscn" id="3_2h0hp"]
-[ext_resource type="PackedScene" uid="uid://tr7g8mds7be1" path="res://card/summon_cards/waiter_card/waiter.tscn" id="4_51pd0"]
-[ext_resource type="PackedScene" uid="uid://bdsirpy5yaygd" path="res://card/summon_cards/intern_card/intern.tscn" id="5_mqjk1"]
-[ext_resource type="PackedScene" uid="uid://bodxpefv64rqg" path="res://card/summon_cards/janitor_card/Janitor.tscn" id="6_clxf6"]
 [ext_resource type="Script" path="res://computer_ai/computer_easy.gd" id="6_x68ul"]
-[ext_resource type="PackedScene" uid="uid://cp8vxxdygkpy2" path="res://card/summon_cards/manager_card/manager.tscn" id="7_ma5wr"]
-[ext_resource type="PackedScene" uid="uid://u01efpo050qe" path="res://card/summon_cards/security_card/security.tscn" id="8_g0vu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjjrb"]
 size = Vector2(3922, 1230.5)
@@ -95,6 +90,8 @@ z_index = 1
 position = Vector2(3782, 672)
 shape = SubResource("RectangleShape2D_8pqj5")
 
+[node name="Cards" type="Node2D" parent="Player2"]
+
 [node name="PlayerArea" type="Area2D" parent="." groups=["player_area"]]
 z_index = 1
 position = Vector2(429, 266)
@@ -118,42 +115,6 @@ polygon = PackedVector2Array(-395, -237, 726, -237, 726, 994, -395, 994, -395, 3
 [node name="CardSummons" type="Node2D" parent="."]
 z_as_relative = false
 y_sort_enabled = true
-
-[node name="Waiter" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2504, 641)
-
-[node name="Waiter2" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2503, 794)
-
-[node name="Waiter3" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2674, 386)
-
-[node name="Waiter4" parent="CardSummons" instance=ExtResource("4_51pd0")]
-position = Vector2(2353, 1193)
-
-[node name="Intern" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(2625, 524)
-
-[node name="Intern2" parent="CardSummons" instance=ExtResource("5_mqjk1")]
-position = Vector2(2496, 395)
-
-[node name="Janitor" parent="CardSummons" instance=ExtResource("6_clxf6")]
-position = Vector2(2766, 643)
-
-[node name="Janitor2" parent="CardSummons" instance=ExtResource("6_clxf6")]
-position = Vector2(2456, 1157)
-
-[node name="Manager" parent="CardSummons" instance=ExtResource("7_ma5wr")]
-position = Vector2(2967, 788)
-
-[node name="Manager2" parent="CardSummons" instance=ExtResource("7_ma5wr")]
-position = Vector2(2979, 661)
-
-[node name="Security" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2679, 995)
-
-[node name="Security2" parent="CardSummons" instance=ExtResource("8_g0vu4")]
-position = Vector2(2678, 841)
 
 [node name="TopBarrier" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
