@@ -1,15 +1,125 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4noh47geyya3"]
+[gd_scene load_steps=10 format=3 uid="uid://c4noh47geyya3"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6rduv"]
+[ext_resource type="VideoStream" path="res://assets/main_menu/ogv_background.ogv" id="2_gaska"]
+[ext_resource type="Texture2D" uid="uid://bbn7lplbysubv" path="res://assets/main_menu/button.png" id="3_qqfid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qx3x"]
+size = Vector2(1279, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oobv0"]
+size = Vector2(334, 145)
+
+[sub_resource type="Animation" id="Animation_a6iml"]
+resource_name = "hovered"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0430615, 0.0336667), Vector2(0.05, 0.04)]
+}
+
+[sub_resource type="Animation" id="Animation_jqgnt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.05, 0.04)]
+}
+
+[sub_resource type="Animation" id="Animation_gdkcq"]
+resource_name = "normal"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.05, 0.04), Vector2(0.0430615, 0.0336667)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uiim"]
+_data = {
+"RESET": SubResource("Animation_jqgnt"),
+"hovered": SubResource("Animation_a6iml"),
+"retract": SubResource("Animation_gdkcq")
+}
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_6rduv")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 378.0
-offset_top = 252.0
-offset_right = 764.0
-offset_bottom = 390.0
+visible = false
+offset_left = 465.0
+offset_top = 276.0
+offset_right = 851.0
+offset_bottom = 414.0
 text = "Play"
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(641, 325)
+shape = SubResource("RectangleShape2D_4qx3x")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Area2D/CollisionShape2D"]
+texture_filter = 1
+offset_left = -639.0
+offset_top = -326.0
+offset_right = 641.0
+offset_bottom = 394.0
+stream = ExtResource("2_gaska")
+autoplay = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D2" type="Area2D" parent="."]
+z_index = 4
+position = Vector2(242, 167)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+z_index = 3
+position = Vector2(399, 158)
+shape = SubResource("RectangleShape2D_oobv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2/CollisionShape2D"]
+z_index = -1
+position = Vector2(-4, -2.5)
+scale = Vector2(0.05, 0.04)
+texture = ExtResource("3_qqfid")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D2/CollisionShape2D"]
+libraries = {
+"": SubResource("AnimationLibrary_0uiim")
+}
+
+[node name="Button" type="Button" parent="Area2D2"]
+offset_left = 264.0
+offset_top = 121.0
+offset_right = 532.0
+offset_bottom = 194.0
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="Area2D/CollisionShape2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
+[connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]
+[connection signal="pressed" from="Area2D2/Button" to="." method="_on_button_pressed"]
