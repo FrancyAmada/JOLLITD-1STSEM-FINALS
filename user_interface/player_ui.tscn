@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=13 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
 [ext_resource type="Texture2D" uid="uid://bvb2ptot5jry5" path="res://assets/Bone.png" id="2_4ue32"]
 [ext_resource type="Texture2D" uid="uid://cejcgwj5yaedy" path="res://assets/base_cards/PicsArt_11-19-09.10.24.png" id="3_tqxep"]
 [ext_resource type="Texture2D" uid="uid://dd7k4bgfvg8pi" path="res://assets/deck_background.png" id="4_xevug"]
 [ext_resource type="Texture2D" uid="uid://dgtlvsphqrh8u" path="res://assets/bones_background.png" id="5_v5s3g"]
+[ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="6_d7ivw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
 size = Vector2(1266, 445)
@@ -177,23 +178,25 @@ fill_mode = 1
 show_percentage = false
 
 [node name="PlayerName" type="Label" parent="."]
-offset_left = 28.0
-offset_top = 40.0
-offset_right = 555.0
-offset_bottom = 85.0
+offset_left = 27.0
+offset_top = 45.0
+offset_right = 554.0
+offset_bottom = 90.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_d7ivw")
+theme_override_font_sizes/font_size = 40
 text = "Player"
 
 [node name="EnemyName" type="Label" parent="."]
-offset_left = 734.0
-offset_top = 40.0
-offset_right = 1261.0
-offset_bottom = 86.0
+offset_left = 735.0
+offset_top = 45.0
+offset_right = 1262.0
+offset_bottom = 91.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("6_d7ivw")
+theme_override_font_sizes/font_size = 40
 text = "Enemy"
 horizontal_alignment = 2
 

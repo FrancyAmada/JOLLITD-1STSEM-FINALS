@@ -574,7 +574,7 @@ offset_bottom = -37.0
 [node name="Paper" type="GPUParticles2D" parent="."]
 position = Vector2(0, -13.6667)
 emitting = false
-amount = 30
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_inbnd")
 texture = ExtResource("15_q44tt")
 lifetime = 2.0
