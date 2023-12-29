@@ -1,6 +1,6 @@
 extends AttackComponent
 
-var bullet: PackedScene = preload("res://card/projectiles/chicken_bullet.tscn")
+var bullet: PackedScene = preload("res://card/projectiles/hotdog_bullet.tscn")
 
 @onready var parent = get_parent()
 
@@ -15,7 +15,7 @@ var target
 
 var projectiles_node: Node2D
 
-var place_position: Vector2 = Vector2(0, -70)
+var place_position: Vector2 = Vector2(140, -80)
 
 
 func _ready():
