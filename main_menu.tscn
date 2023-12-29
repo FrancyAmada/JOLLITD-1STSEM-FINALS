@@ -1,13 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4noh47geyya3"]
+[gd_scene load_steps=21 format=3 uid="uid://c4noh47geyya3"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6rduv"]
-[ext_resource type="VideoStream" path="res://assets/main_menu/ogv_background.ogv" id="2_gaska"]
+[ext_resource type="Texture2D" uid="uid://do2xrv7k1dt4u" path="res://assets/main_menu/main_menu_tilemap.png" id="2_06mr7"]
 [ext_resource type="Texture2D" uid="uid://bbn7lplbysubv" path="res://assets/main_menu/button.png" id="3_qqfid"]
 [ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="4_83xuv"]
 [ext_resource type="AudioStream" uid="uid://dvum302hy70eg" path="res://assets/sounds/Jollibee's_ Phase 2 Certificate Soundtrack (90s Tv music loop).wav" id="5_w6hyb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qx3x"]
-size = Vector2(1279, 648)
+[ext_resource type="Texture2D" uid="uid://cjvvwhadfspx6" path="res://assets/Clouds/Clouds 5/1.png" id="6_vc7tm"]
+[ext_resource type="Texture2D" uid="uid://b8mpqn2dmtgv6" path="res://assets/Clouds/Clouds 5/2.png" id="7_hfbbs"]
+[ext_resource type="Texture2D" uid="uid://c8bpkvsnuwe2t" path="res://assets/Clouds/Clouds 5/3.png" id="8_psmex"]
+[ext_resource type="Texture2D" uid="uid://b3p8bvdxwxr38" path="res://assets/Clouds/Clouds 5/4.png" id="9_62rnl"]
+[ext_resource type="Texture2D" uid="uid://cdpqgpgcerrab" path="res://assets/Clouds/Clouds 5/5.png" id="10_n6but"]
+[ext_resource type="Texture2D" uid="uid://bcy6vnx47w10n" path="res://assets/Clouds/Clouds 7/4.png" id="11_0i1ql"]
+[ext_resource type="Script" path="res://game_levels/Clouds.gd" id="11_3426b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oobv0"]
 size = Vector2(334, 145)
@@ -84,6 +88,28 @@ expand_margin_right = 40.0
 shadow_size = 1
 shadow_offset = Vector2(-10, 10)
 
+[sub_resource type="Animation" id="Animation_akfht"]
+resource_name = "display"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.1), Vector2(1.1, 1.1), Vector2(1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3lyp2"]
+_data = {
+"display": SubResource("Animation_akfht")
+}
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_6rduv")
 
@@ -95,25 +121,14 @@ offset_right = 851.0
 offset_bottom = 414.0
 text = "Play"
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(641, 325)
-shape = SubResource("RectangleShape2D_4qx3x")
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Area2D/CollisionShape2D"]
-texture_filter = 1
-offset_left = -639.0
-offset_top = -326.0
-offset_right = 641.0
-offset_bottom = 394.0
-stream = ExtResource("2_gaska")
-autoplay = true
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(652, 325)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_06mr7")
 
 [node name="Area2D2" type="Area2D" parent="."]
 z_index = 4
-position = Vector2(242, 218)
+position = Vector2(242, 276)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 z_index = 3
@@ -137,11 +152,124 @@ offset_top = 121.0
 offset_right = 532.0
 offset_bottom = 194.0
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_w6hyb")
+autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(1, 0.933333, 0.913725, 1)
+
+[node name="Clouds" type="Node2D" parent="."]
+script = ExtResource("11_3426b")
+
+[node name="4" type="Sprite2D" parent="Clouds"]
+position = Vector2(275, 500)
+texture = ExtResource("11_0i1ql")
+
+[node name="5" type="Sprite2D" parent="Clouds"]
+position = Vector2(851, 500)
+texture = ExtResource("11_0i1ql")
+
+[node name="6" type="Sprite2D" parent="Clouds"]
+position = Vector2(1427, 500)
+texture = ExtResource("11_0i1ql")
+
+[node name="7" type="Sprite2D" parent="Clouds"]
+position = Vector2(2003, 500)
+texture = ExtResource("11_0i1ql")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Clouds"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_vc7tm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_vc7tm")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(50, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_hfbbs")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_hfbbs")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(100, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_psmex")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_psmex")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(150, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_62rnl")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_62rnl")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(200, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer5"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_n6but")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer5"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_n6but")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 0.819608, 0.521569, 1)
+energy = 0.2
+blend_mode = 2
+
 [node name="Label" type="Label" parent="."]
-offset_left = 147.0
-offset_top = 79.0
-offset_right = 1130.0
-offset_bottom = 233.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 145.0
+offset_top = 99.0
+offset_right = 1138.0
+offset_bottom = 263.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(496, 82)
 theme_override_colors/font_color = Color(1, 0.921569, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 70
@@ -149,16 +277,15 @@ theme_override_fonts/font = ExtResource("4_83xuv")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxFlat_32x2x")
 text = "Jolly Clash"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_w6hyb")
-autoplay = true
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(1, 0.933333, 0.905882, 1)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+"": SubResource("AnimationLibrary_3lyp2")
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="finished" from="Area2D/CollisionShape2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
 [connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]

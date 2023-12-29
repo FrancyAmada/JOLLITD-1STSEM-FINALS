@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://neb1dtfcsuon"
+path="res://.godot/imported/explosion-46566.mp3-b6f1c7731d475ac8cfb9479422945b33.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/explosion-46566.mp3"
+dest_files=["res://.godot/imported/explosion-46566.mp3-b6f1c7731d475ac8cfb9479422945b33.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

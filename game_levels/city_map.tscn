@@ -137,8 +137,11 @@ shape = SubResource("RectangleShape2D_scr1o")
 debug_color = Color(0.943717, 0.221295, 0.230676, 0.42)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(2000, 600)
 stream = ExtResource("7_gocj5")
+volume_db = -10.0
 autoplay = true
+attenuation = 1.75276e-05
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.917647, 0.831373, 0.772549, 1)

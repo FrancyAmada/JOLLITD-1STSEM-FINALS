@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctn2q8c0ue1w1"
+path="res://.godot/imported/laser-cannon-02-33201.mp3-213bd4f1201b746cec38b1eac31bfdce.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/laser-cannon-02-33201.mp3"
+dest_files=["res://.godot/imported/laser-cannon-02-33201.mp3-213bd4f1201b746cec38b1eac31bfdce.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

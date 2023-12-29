@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b13iy5gb13fnh"
+path="res://.godot/imported/retro-spell-sfx-85574.mp3-77900e81b5d047e577881d376c43682f.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/retro-spell-sfx-85574.mp3"
+dest_files=["res://.godot/imported/retro-spell-sfx-85574.mp3-77900e81b5d047e577881d376c43682f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

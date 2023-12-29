@@ -85,4 +85,4 @@ func _on_animation_finished(anim_name):
 		return_to_menu()
 
 func _on_audio_stream_player_2d_finished():
-	audio_player.play(0)
+	audio_player.play()

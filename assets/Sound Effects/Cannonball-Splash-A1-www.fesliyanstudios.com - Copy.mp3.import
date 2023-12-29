@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://fgdq8ivni181"
+path="res://.godot/imported/Cannonball-Splash-A1-www.fesliyanstudios.com - Copy.mp3-16a023d225a1fdaa5cfe2f26cf6cd709.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/Cannonball-Splash-A1-www.fesliyanstudios.com - Copy.mp3"
+dest_files=["res://.godot/imported/Cannonball-Splash-A1-www.fesliyanstudios.com - Copy.mp3-16a023d225a1fdaa5cfe2f26cf6cd709.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

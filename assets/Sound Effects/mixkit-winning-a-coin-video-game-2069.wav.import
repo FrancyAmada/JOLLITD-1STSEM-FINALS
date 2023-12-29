@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cxkqpu58aixvb"
+path="res://.godot/imported/mixkit-winning-a-coin-video-game-2069.wav-63366fb40b663b2e05516b7e785aedbe.sample"
+
+[deps]
+
+source_file="res://assets/Sound Effects/mixkit-winning-a-coin-video-game-2069.wav"
+dest_files=["res://.godot/imported/mixkit-winning-a-coin-video-game-2069.wav-63366fb40b663b2e05516b7e785aedbe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dchs38fy3ruj2"
+path="res://.godot/imported/laser-gun-sound-26392.mp3-3345db504f059c028524bfe4d11738cd.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/laser-gun-sound-26392.mp3"
+dest_files=["res://.godot/imported/laser-gun-sound-26392.mp3-3345db504f059c028524bfe4d11738cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

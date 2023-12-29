@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://sq245ckfcpp8"
+path="res://.godot/imported/impact-sound-effect-8-bit-retro-151796.mp3-8031d035ce680254f692b6b0596984af.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/impact-sound-effect-8-bit-retro-151796.mp3"
+dest_files=["res://.godot/imported/impact-sound-effect-8-bit-retro-151796.mp3-8031d035ce680254f692b6b0596984af.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

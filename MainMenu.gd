@@ -3,9 +3,10 @@ extends Node2D
 var game_map = "res://game_levels/city_map.tscn"
 
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var title_anim_player: AnimationPlayer = get_node("Label/AnimationPlayer")
 
 func _ready():
-	pass
+	title_anim_player.play("display")
 
 func _physics_process(delta):
 	pass

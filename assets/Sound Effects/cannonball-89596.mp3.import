@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://13vfsmq4x2a5"
+path="res://.godot/imported/cannonball-89596.mp3-16b9787daf0e92e3366573bafa1e5b5a.mp3str"
+
+[deps]
+
+source_file="res://assets/Sound Effects/cannonball-89596.mp3"
+dest_files=["res://.godot/imported/cannonball-89596.mp3-16b9787daf0e92e3366573bafa1e5b5a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

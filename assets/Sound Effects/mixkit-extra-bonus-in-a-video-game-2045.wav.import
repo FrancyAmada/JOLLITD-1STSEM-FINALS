@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://raey7oxt5lxv"
+path="res://.godot/imported/mixkit-extra-bonus-in-a-video-game-2045.wav-998e821ae7945c34b3d806c882922d79.sample"
+
+[deps]
+
+source_file="res://assets/Sound Effects/mixkit-extra-bonus-in-a-video-game-2045.wav"
+dest_files=["res://.godot/imported/mixkit-extra-bonus-in-a-video-game-2045.wav-998e821ae7945c34b3d806c882922d79.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
