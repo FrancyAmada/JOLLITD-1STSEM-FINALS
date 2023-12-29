@@ -12,6 +12,8 @@ class_name PlayerUI
 @onready var player_health_bar: ProgressBar = $PlayerHealthBar
 @onready var enemy_health_bar: ProgressBar = $EnemyHealthBar
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var overlay: Sprite2D = $Overlay
+@onready var pause_menu: Control = $PauseMenu
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse
@@ -29,6 +31,9 @@ var paused: bool = false
 #	for card in cards_node.get_children():
 #		if card is Card:
 #			card.set_initial_position()
+
+func _ready():
+	pause_menu.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func process(delta):
@@ -140,3 +145,10 @@ func _on_button_pressed():
 	else:
 		paused = true
 		player.pause_pressed()
+
+func _on_quit_pressed():
+	get_tree().paused = false
+	player.game_map.return_to_menu()
+
+func _on_check_button_toggled(button_pressed):
+	player.game_map.audio_player.playing = button_pressed

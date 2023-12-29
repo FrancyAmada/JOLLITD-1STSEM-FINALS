@@ -29,6 +29,7 @@ size = Vector2(5485, 269)
 size = Vector2(5604, 338)
 
 [node name="CityMap" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_ju0fv")
 boundary = Array[int]([-100, 640, 250, 1600])
 

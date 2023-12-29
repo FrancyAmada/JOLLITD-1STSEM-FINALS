@@ -8,6 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_l6sqj"]
 
 [node name="Player" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_qrn17")
 
 [node name="PlayerUI" parent="." instance=ExtResource("2_krdbn")]

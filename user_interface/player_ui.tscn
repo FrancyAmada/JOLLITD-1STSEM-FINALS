@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=24 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
 [ext_resource type="Texture2D" uid="uid://bvb2ptot5jry5" path="res://assets/Bone.png" id="2_4ue32"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dd7k4bgfvg8pi" path="res://assets/deck_background.png" id="4_xevug"]
 [ext_resource type="Texture2D" uid="uid://dgtlvsphqrh8u" path="res://assets/bones_background.png" id="5_v5s3g"]
 [ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="6_d7ivw"]
+[ext_resource type="Texture2D" uid="uid://ewxr1sqonmf1" path="res://assets/Clouds/Clouds 1/1.png" id="7_vwkx7"]
+[ext_resource type="Theme" uid="uid://b74k3fytsddjd" path="res://user_interface/player_ui_theme.tres" id="8_umkh8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
 size = Vector2(1266, 445)
@@ -44,6 +46,11 @@ shadow_offset = Vector2(-5, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64etp"]
 bg_color = Color(0.560784, 0, 0.0980392, 1)
+
+[sub_resource type="Theme" id="Theme_jqcje"]
+default_font = ExtResource("6_d7ivw")
+default_font_size = 20
+Button/styles/disabled = null
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_861ll"]
 bg_color = Color(0.568627, 0.239216, 0.0392157, 1)
@@ -208,6 +215,22 @@ _data = {
 "winner": SubResource("Animation_bumft")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_017l7"]
+bg_color = Color(1, 0.521569, 0.309804, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.360784, 0.172549, 0, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 30.0
+
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_ar28p")
 
@@ -368,6 +391,7 @@ offset_left = 616.0
 offset_top = 1.0
 offset_right = 670.0
 offset_bottom = 50.0
+theme = SubResource("Theme_jqcje")
 theme_override_colors/font_outline_color = Color(0.588235, 0.588235, 0.588235, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("6_d7ivw")
@@ -406,8 +430,79 @@ theme_override_fonts/font = ExtResource("6_d7ivw")
 theme_override_font_sizes/font_size = 120
 text = "You Win!"
 
+[node name="Overlay" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0.423529)
+z_index = 1
+position = Vector2(657, 384)
+scale = Vector2(3, 3)
+texture = ExtResource("7_vwkx7")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_umkh8")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -189.0
+offset_right = 148.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_017l7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("6_d7ivw")
+theme_override_font_sizes/font_size = 30
+text = "----   PAUSE   ----
+"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="CheckButton" type="CheckButton" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+text = "SFX"
+alignment = 1
+
+[node name="Quit" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
 [connection signal="area_entered" from="PlaceArea" to="." method="_on_place_area_area_entered"]
 [connection signal="area_exited" from="PlaceArea" to="." method="_on_place_area_area_exited"]
 [connection signal="area_entered" from="Mouse" to="." method="_on_mouse_area_entered"]
 [connection signal="area_exited" from="Mouse" to="." method="_on_mouse_area_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="PauseMenu/Panel/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

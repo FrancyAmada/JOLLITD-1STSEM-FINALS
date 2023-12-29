@@ -150,8 +150,9 @@ func _on_area_2d_area_exited(area):
 		area.parent.queue_free()
 
 func pause_pressed():
-	for summon in summon_node.get_children():
-		summon.set_physics_process(!player_ui.paused)
-	for projectile in projectiles_node.get_children():
-		projectile.set_physics_process(!player_ui.paused)
-		
+	var is_paused: bool = get_tree().paused
+	player_ui.overlay.visible = !is_paused
+	player_ui.pause_menu.visible = !is_paused
+	get_tree().paused = !is_paused
+	
+	
