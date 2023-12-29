@@ -1,16 +1,15 @@
-[gd_scene load_steps=28 format=3 uid="uid://c31n2oxql2iuy"]
+[gd_scene load_steps=27 format=3 uid="uid://c31n2oxql2iuy"]
 
-[ext_resource type="Script" path="res://card/building_cards/bucketcannon_card/bucket_cannon.gd" id="1_u6mlp"]
-[ext_resource type="Texture2D" uid="uid://tmg222e8pvyq" path="res://assets/base_towers/Bucket-Cannon (base).png" id="2_ul50y"]
+[ext_resource type="Script" path="res://card/building_cards/frieslauncher_card/fries_launcher.gd" id="1_laty1"]
+[ext_resource type="Texture2D" uid="uid://cbuhrmf5tdsn5" path="res://assets/tower_animations/Fries_Launcher(attack).png" id="2_pvb4b"]
 [ext_resource type="PackedScene" uid="uid://ba2mdypfi1l0u" path="res://components/character_components/animation_component.tscn" id="3_ytsd8"]
 [ext_resource type="PackedScene" uid="uid://cfggx6lfvfoyg" path="res://components/shadow.tscn" id="4_7ejcv"]
-[ext_resource type="Texture2D" uid="uid://dmvn1cnen7ml7" path="res://assets/tower_animations/Bucket-Cannon(attack).png" id="4_us7rb"]
 [ext_resource type="PackedScene" uid="uid://cq3gias2vkp26" path="res://components/health_bar.tscn" id="5_5xvi4"]
 [ext_resource type="PackedScene" uid="uid://b3yi74ir4xyc1" path="res://components/character_components/hit_box_component.tscn" id="5_oxmji"]
 [ext_resource type="PackedScene" uid="uid://cdhwmtisyk8u5" path="res://components/character_components/target_detection_component.tscn" id="6_pi3w1"]
 [ext_resource type="PackedScene" uid="uid://c1tq8642tjcmw" path="res://components/character_components/attack_component.tscn" id="7_p0r5s"]
 [ext_resource type="PackedScene" uid="uid://da1eldb6ik7uq" path="res://components/tower_smoke.tscn" id="7_wgmu1"]
-[ext_resource type="Script" path="res://card/building_cards/bucketcannon_card/bucket_cannon_attack.gd" id="8_voi2h"]
+[ext_resource type="Script" path="res://card/building_cards/frieslauncher_card/fries_launcher_attack.gd" id="8_3p3ah"]
 
 [sub_resource type="Animation" id="Animation_8ndcv"]
 resource_name = "Death"
@@ -76,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ul50y")]
+"values": [ExtResource("2_pvb4b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -112,7 +111,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [10]
 }
 
 [sub_resource type="Animation" id="Animation_n1p27"]
@@ -127,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ul50y")]
+"values": [ExtResource("2_pvb4b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -163,7 +162,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [10]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -228,7 +227,6 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_aujvg"]
 resource_name = "Shoot"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -239,7 +237,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_us7rb")]
+"values": [ExtResource("2_pvb4b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -251,7 +249,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [10]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -260,10 +258,10 @@ tracks/2/path = NodePath("../Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -272,10 +270,10 @@ tracks/3/path = NodePath("../Sprite2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1.5, 1.5), Vector2(1.7, 1.4), Vector2(1.5, 1.5)]
+"values": [Vector2(1.5, 1.5), Vector2(1.7, 1.4), Vector2(1.5, 1.5), Vector2(1.7, 1.4), Vector2(1.5, 1.5), Vector2(1.7, 1.4), Vector2(1.5, 1.5), Vector2(1.5, 1.5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -284,10 +282,10 @@ tracks/4/path = NodePath("../Sprite2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, -16), Vector2(0, -12), Vector2(0, -16)]
+"values": [Vector2(0, -16), Vector2(0, -12), Vector2(0, -16), Vector2(0, -12), Vector2(0, -16), Vector2(0, -12), Vector2(0, -16), Vector2(0, -16)]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
@@ -296,11 +294,17 @@ tracks/5/path = NodePath("../AttackComponent")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
-"method": &"deal_attack"
+"method": &"first_deal_attack"
+}, {
+"args": [],
+"method": &"second_deal_attack"
+}, {
+"args": [],
+"method": &"last_deal_attack"
 }]
 }
 
@@ -349,17 +353,18 @@ size = Vector2(66.3333, 67)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg8nt"]
 radius = 1600.0
 
-[node name="BucketCannon" type="Node2D"]
+[node name="FriesLauncher" type="Node2D"]
 z_index = 10
 scale = Vector2(3, 3)
-script = ExtResource("1_u6mlp")
-health = 300.0
-attack_range = 900
+script = ExtResource("1_laty1")
+health = 350.0
+attack_range = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_ul50y")
+texture = ExtResource("2_pvb4b")
+hframes = 10
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_ytsd8")]
 sprite = NodePath("../Sprite2D")
@@ -384,15 +389,18 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_g1dni")
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_pi3w1")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mg8nt")
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_component") instance=ExtResource("7_p0r5s")]
-script = ExtResource("8_voi2h")
+script = ExtResource("8_3p3ah")
 animation_component = NodePath("../AnimationComponent")
-attack_damage = 35.0
-attack_cd = 1.5
+attack_damage = 10.0
+attack_damage_2 = 20.0
+last_hit_damage = 40.0
+attack_cd = 3.5
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
 

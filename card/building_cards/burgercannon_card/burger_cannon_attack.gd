@@ -1,6 +1,8 @@
 extends AttackComponent
 
-var bullet: PackedScene = preload("res://card/projectiles/chicken_bullet.tscn")
+var bullet: PackedScene = preload("res://card/projectiles/burger_bullet.tscn")
+
+var target_detection: TargetDetectionComponent
 
 @onready var parent = get_parent()
 
@@ -15,7 +17,10 @@ var target
 
 var projectiles_node: Node2D
 
-var place_position: Vector2 = Vector2(0, -70)
+var place_position: Vector2 = Vector2(70, -33)
+
+var target_distance
+
 
 
 func _ready():
@@ -49,5 +54,5 @@ func deal_attack():
 		projectiles_node.add_child(new_bullet)
 		new_bullet.initialize(parent.summon_id, parent.target, attack_damage)
 		new_bullet.global_position = initial_pos
-		new_bullet.animation_player
+		new_bullet.animation_player    
 
