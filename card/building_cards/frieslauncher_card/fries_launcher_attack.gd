@@ -26,6 +26,7 @@ var place_position3: Vector2 = Vector2(45, -70)
 func _ready():
 	projectiles_node = get_parent().get_parent().get_parent().get_node("Projectiles")
 	animation_component.connect("animation_is_finished", _on_attack_animation_finished)
+	animation_component.connect("facing_direction_changed", _on_facing_direction_changed)
 	
 func process(delta):
 	if !can_use_attack:
@@ -76,3 +77,12 @@ func last_deal_attack():
 		new_bullet.global_position = initial_pos
 		new_bullet.animation_player
 		
+func _on_facing_direction_changed(facing_right: bool):
+	if facing_right:
+		place_position1 = Vector2(45, -110)
+		place_position2 = Vector2(45, -90)
+		place_position3 = Vector2(45, -70)
+	else:
+		place_position1 = Vector2(-45, -110)
+		place_position2 = Vector2(-45, -90)
+		place_position3 = Vector2(-45, -70)

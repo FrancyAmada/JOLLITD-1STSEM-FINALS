@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://c31n2oxql2iuy"]
 
 [ext_resource type="Script" path="res://card/building_cards/hotdoglauncher_card/hotdog_launcher.gd" id="1_p36bo"]
-[ext_resource type="Texture2D" uid="uid://tmg222e8pvyq" path="res://assets/base_towers/Bucket-Cannon (base).png" id="2_ul50y"]
+[ext_resource type="Texture2D" uid="uid://ddq7fs5rrd8ea" path="res://assets/base_towers/hotdog launcher (base).png" id="2_g7r8e"]
 [ext_resource type="PackedScene" uid="uid://ba2mdypfi1l0u" path="res://components/character_components/animation_component.tscn" id="3_ytsd8"]
 [ext_resource type="PackedScene" uid="uid://cfggx6lfvfoyg" path="res://components/shadow.tscn" id="4_7ejcv"]
 [ext_resource type="Texture2D" uid="uid://dgveegnpcwkpu" path="res://assets/tower_animations/hotdog launcher(attack).png" id="4_c5bfj"]
@@ -127,7 +127,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ul50y")]
+"values": [ExtResource("2_g7r8e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -353,13 +353,13 @@ radius = 1600.0
 z_index = 10
 scale = Vector2(3, 3)
 script = ExtResource("1_p36bo")
-health = 300.0
-attack_range = 1000
+health = 400.0
+attack_range = 1400
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_ul50y")
+texture = ExtResource("2_g7r8e")
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player", "animation_tree") instance=ExtResource("3_ytsd8")]
 sprite = NodePath("../Sprite2D")
@@ -376,7 +376,6 @@ tree_root = SubResource("AnimationNodeStateMachine_vy4mi")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" parent="." instance=ExtResource("5_oxmji")]
-visible = false
 collision_layer = 64
 collision_mask = 0
 
@@ -385,7 +384,6 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_g1dni")
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_pi3w1")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mg8nt")
@@ -393,8 +391,8 @@ shape = SubResource("CircleShape2D_mg8nt")
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("animation_component") instance=ExtResource("7_p0r5s")]
 script = ExtResource("8_65i71")
 animation_component = NodePath("../AnimationComponent")
-attack_damage = 45.0
-attack_cd = 1.5
+attack_damage = 50.0
+attack_cd = 4.0
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
 

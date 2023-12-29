@@ -68,7 +68,7 @@ func _physics_process(delta):
 		if card_timer >= card_cooldown:
 			get_card()
 			card_timer = 0.0
-			print(player_ui.cards_node.get_child_count())
+#			print(player_ui.cards_node.get_child_count())
 	
 	# Bone Production
 	if time_count >= 1 and !player_ui.paused:
@@ -135,6 +135,7 @@ func get_card():
 		get_cards_from_deck()
 	
 func load_player():
+	player_ui.update_namelabels(profile.profile_name, game_map.player2.profile_name)
 	deck = profile.deck
 	get_cards_from_deck()
 	for i in range(5):

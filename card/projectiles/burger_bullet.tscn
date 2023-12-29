@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://sdew8fljiaax"]
+[gd_scene load_steps=9 format=3 uid="uid://bmulb0ma2si2s"]
 
 [ext_resource type="Script" path="res://card/projectiles/burger_bullet.gd" id="1_ra87h"]
 [ext_resource type="Texture2D" uid="uid://b7rv26fqginpx" path="res://assets/tower_projectiles/Burger.png" id="2_80780"]

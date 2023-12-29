@@ -353,7 +353,7 @@ z_index = 10
 scale = Vector2(3, 3)
 script = ExtResource("1_tw5wn")
 health = 275.0
-attack_range = 1000
+attack_range = 900
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -386,6 +386,7 @@ position = Vector2(-1.33333, -0.583334)
 shape = SubResource("RectangleShape2D_g1dni")
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_pi3w1")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mg8nt")

@@ -1,16 +1,18 @@
 extends Node2D
 
+@onready var save_path = "res://user_profile/saveFileProfile.save"
+
 @onready var main_menu = "res://main_menu.tscn"
 
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var player1: Player = $Player1
-var player1_profile
+var player1_profile = null
 
 @export var boundary: Array[int] = [0, 0, 0, 0]
 
 @onready var player2: EasyAI = $Player2
-var player2_profile
+var player2_profile = null
 
 
 func _ready():
@@ -24,13 +26,14 @@ func _ready():
 	print_debug(player1.profile.saveObject())
 	player1.player_ui.animation_player.connect("animation_finished", _on_animation_finished)
 	audio_player.playing = true
+	save_game()
 	
 func set_player(player: Player, player_profile: Dictionary):
 	player.profile.set_profile(player_profile)
 	player.load_player()
 	
 func save_game():
-	var save_file = FileAccess.open("saveFileProfile", FileAccess.WRITE) # Open File
+	var save_file = FileAccess.open(save_path, FileAccess.WRITE) # Open File
 	
 	var profile_node = player1.get_node("Profile")
 	var profile_data = profile_node.saveObject()
@@ -39,13 +42,14 @@ func save_game():
 	save_file.store_line(JSON.stringify(profile_data))
 	
 	save_file.close() # Close File
+	print_debug("Saved game: Data - ", JSON.stringify(profile_data))
 
 func get_player1_profile():
-	if !FileAccess.file_exists("user_profile/saveFileProfile"):
+	if !FileAccess.file_exists(save_path):
 		print("Error, no Save File to load.")
 		return null
 	
-	var save_file = FileAccess.open("saveFileProfile", FileAccess.READ)
+	var save_file = FileAccess.open(save_path, FileAccess.READ)
 	
 	while save_file.get_position() < save_file.get_length():
 		# Get the saved dictionary from the next line in the save file
@@ -58,10 +62,7 @@ func get_player1_profile():
 		return loaded_data
 
 func create_new_profile():
-	var beginner_deck: Array = [Global.available_cards[0], Global.available_cards[1],
-	Global.available_cards[2], Global.available_cards[3], Global.available_cards[4],
-	Global.available_cards[5], Global.available_cards[6], Global.available_cards[7],
-	Global.available_cards[8],]
+	var beginner_deck: Array = [0, 1, 2, 3, 4, 5, 6, 7]
 	var profile_name = "Administrator"
 	var dict := {
 		"profile": {

@@ -20,7 +20,7 @@ func process(delta):
 func get_nearest_target():
 #	print_debug(targets_list, " by ", parent)
 	nearest_target = null
-	nearest_distance = 1000
+	nearest_distance = 2000
 	for hit_box in targets_list:
 		var distance: float = global_position.distance_to(hit_box.global_position)
 		if distance < nearest_distance and int(hit_box.id) != int(parent.summon_id):

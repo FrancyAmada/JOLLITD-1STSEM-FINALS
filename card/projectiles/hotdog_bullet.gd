@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var hit_detector: Area2D = $HitDetector
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var damage_area: Area2D = $DamageArea
 
 var id: int = 0
 
@@ -11,6 +12,9 @@ var damage: int = 0
 
 var target
 var target_direction: Vector2 = Vector2(1, 1)
+
+func _ready():
+	damage_area.monitoring = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,9 +40,14 @@ func _on_hit_detector_area_entered(area):
 
 func hit_target(target_area):
 	if target_area != null:
-		target_area.receive_hit(damage)
+		hit_detector.monitoring = false
+		damage_area.monitoring = true
 		animation_player.play("Explode")
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Explode":
 		queue_free()
+
+func _on_damage_area_area_entered(area):
+	if area is HitBoxComponent and area.parent.summon_id != id:
+		area.parent.receive_hit(damage)

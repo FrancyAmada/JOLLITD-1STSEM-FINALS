@@ -2,6 +2,8 @@ extends Node2D
 
 class_name EasyAI
 
+var profile_name: String = "Enemy AI"
+
 @export var health: int = 300
 
 @onready var player_id: int = 0
@@ -49,7 +51,7 @@ func _physics_process(delta):
 		card_timer += delta
 		if card_timer >= card_cooldown:
 			card_timer = 0.0
-			print(current_cards.get_child_count())
+#			print(current_cards.get_child_count())
 	
 	# Bone Production
 	if time_count >= 1 and !paused:
@@ -67,7 +69,7 @@ func _physics_process(delta):
 			place_card(get_card())
 		
 	time_count += delta
-	print(bones)
+#	print(bones)
 
 
 func get_cards_from_deck():

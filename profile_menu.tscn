@@ -1,0 +1,370 @@
+[gd_scene load_steps=30 format=3 uid="uid://5pcufw051osh"]
+
+[ext_resource type="Texture2D" uid="uid://do2xrv7k1dt4u" path="res://assets/main_menu/main_menu_tilemap.png" id="1_qoxqv"]
+[ext_resource type="Script" path="res://profile_menu.gd" id="1_ttgck"]
+[ext_resource type="Script" path="res://game_levels/Clouds.gd" id="2_06ih2"]
+[ext_resource type="Texture2D" uid="uid://cjvvwhadfspx6" path="res://assets/Clouds/Clouds 5/1.png" id="3_23aft"]
+[ext_resource type="Texture2D" uid="uid://b8mpqn2dmtgv6" path="res://assets/Clouds/Clouds 5/2.png" id="4_qvqkm"]
+[ext_resource type="Texture2D" uid="uid://c8bpkvsnuwe2t" path="res://assets/Clouds/Clouds 5/3.png" id="5_tu7mh"]
+[ext_resource type="Texture2D" uid="uid://b3p8bvdxwxr38" path="res://assets/Clouds/Clouds 5/4.png" id="6_1ccrt"]
+[ext_resource type="Texture2D" uid="uid://cdpqgpgcerrab" path="res://assets/Clouds/Clouds 5/5.png" id="7_orml3"]
+[ext_resource type="Theme" uid="uid://b74k3fytsddjd" path="res://user_interface/player_ui_theme.tres" id="8_na2wr"]
+[ext_resource type="Texture2D" uid="uid://dq7usuvj5ep0f" path="res://assets/cards/intern.png" id="9_4eo5p"]
+[ext_resource type="Texture2D" uid="uid://lceprr6isbdo" path="res://assets/cards/waiter.png" id="10_51w2u"]
+[ext_resource type="Texture2D" uid="uid://se31tm6o6maj" path="res://assets/cards/janitor.png" id="11_xmlgu"]
+[ext_resource type="Texture2D" uid="uid://d07ea3v3l5lfp" path="res://assets/cards/manager.png" id="12_ltquf"]
+[ext_resource type="Texture2D" uid="uid://dlqrf35yc1hp3" path="res://assets/cards/chef.png" id="13_glcr5"]
+[ext_resource type="Texture2D" uid="uid://ddop2m3urk5r0" path="res://assets/cards/security.png" id="14_7xlin"]
+[ext_resource type="Texture2D" uid="uid://c7dk7bfnkvl7b" path="res://assets/cards/hr_agent.png" id="15_w55fs"]
+[ext_resource type="Texture2D" uid="uid://0e1dymy8hpb7" path="res://assets/cards/rider.png" id="16_6phev"]
+[ext_resource type="Texture2D" uid="uid://b3j20jt4cvb3d" path="res://assets/cards/bucket_cannon.png" id="17_k4pvd"]
+[ext_resource type="Texture2D" uid="uid://codrjqxm5eoy0" path="res://assets/cards/burger_cannon.png" id="18_admei"]
+[ext_resource type="Texture2D" uid="uid://dgqcldxy6b1v" path="res://assets/cards/coke_sprayer.png" id="19_n2gq1"]
+[ext_resource type="Texture2D" uid="uid://na1stvrvjsa7" path="res://assets/cards/fries_cannon.png" id="20_won7b"]
+[ext_resource type="Texture2D" uid="uid://cnkumd3f0axup" path="res://assets/cards/hotdog_cannon.png" id="21_2qe0c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6mi4"]
+bg_color = Color(0.345098, 0.611765, 0.917647, 0.439216)
+border_width_left = 80
+border_width_top = 80
+border_width_right = 80
+border_width_bottom = 80
+border_color = Color(0.333333, 0.419608, 1, 0.521569)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yt6t"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.807843, 0.807843, 0.807843, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcamq"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.807843, 0.807843, 0.807843, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ed602"]
+content_margin_left = 20.0
+content_margin_top = 30.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbccn"]
+bg_color = Color(0.760784, 0.678431, 0.415686, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.443137, 0.372549, 0.172549, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tutkr"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtp5x"]
+
+[node name="ProfileMenu" type="Node"]
+script = ExtResource("1_ttgck")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(652, 325)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_qoxqv")
+
+[node name="Clouds" type="Node2D" parent="."]
+script = ExtResource("2_06ih2")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Clouds"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_23aft")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_23aft")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(50, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_qvqkm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_qvqkm")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(100, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_tu7mh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_tu7mh")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(150, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_1ccrt")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_1ccrt")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="Clouds/ParallaxBackground"]
+modulate = Color(1, 0.807843, 0.607843, 1)
+motion_offset = Vector2(200, 0)
+motion_mirroring = Vector2(1726, 0)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer5"]
+position = Vector2(430, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_orml3")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Clouds/ParallaxBackground/ParallaxLayer5"]
+position = Vector2(1293, 190)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_orml3")
+
+[node name="ProfileGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_na2wr")
+
+[node name="Panel" type="Panel" parent="ProfileGUI"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 22.0
+offset_right = 1254.0
+offset_bottom = 633.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6mi4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ProfileGUI/Panel"]
+layout_mode = 2
+offset_right = 370.0
+offset_bottom = 611.0
+theme_override_constants/separation = 20
+
+[node name="AvailableCards" type="ItemList" parent="ProfileGUI/Panel"]
+layout_mode = 2
+offset_left = 385.0
+offset_top = 395.0
+offset_right = 1225.0
+offset_bottom = 615.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_margin = 5
+theme_override_constants/outline_size = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_6yt6t")
+allow_search = false
+max_text_lines = 2
+text_overrun_behavior = 0
+item_count = 13
+max_columns = 4
+same_column_width = true
+fixed_column_width = 197
+icon_mode = 0
+icon_scale = 0.1
+item_0/text = "intern"
+item_0/icon = ExtResource("9_4eo5p")
+item_1/text = "waiter"
+item_1/icon = ExtResource("10_51w2u")
+item_2/text = "janitor"
+item_2/icon = ExtResource("11_xmlgu")
+item_3/text = "manager"
+item_3/icon = ExtResource("12_ltquf")
+item_4/text = "chef"
+item_4/icon = ExtResource("13_glcr5")
+item_5/text = "security"
+item_5/icon = ExtResource("14_7xlin")
+item_6/text = "hr agent"
+item_6/icon = ExtResource("15_w55fs")
+item_7/text = "rider"
+item_7/icon = ExtResource("16_6phev")
+item_8/text = "bucket  cannon"
+item_8/icon = ExtResource("17_k4pvd")
+item_9/text = "burger  cannon"
+item_9/icon = ExtResource("18_admei")
+item_10/text = "coke      sprayer"
+item_10/icon = ExtResource("19_n2gq1")
+item_11/text = "fries     cannon"
+item_11/icon = ExtResource("20_won7b")
+item_12/text = "hotdog  cannon"
+item_12/icon = ExtResource("21_2qe0c")
+
+[node name="DeckCards" type="ItemList" parent="ProfileGUI/Panel"]
+layout_mode = 2
+offset_left = 385.0
+offset_top = 80.0
+offset_right = 1225.0
+offset_bottom = 300.0
+theme = ExtResource("8_na2wr")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/icon_margin = 5
+theme_override_constants/outline_size = 20
+theme_override_styles/panel = SubResource("StyleBoxFlat_gcamq")
+max_text_lines = 2
+item_count = 8
+max_columns = 4
+same_column_width = true
+fixed_column_width = 197
+icon_mode = 0
+icon_scale = 0.1
+item_0/text = ""
+item_1/text = ""
+item_2/text = ""
+item_3/text = ""
+item_4/text = ""
+item_5/text = ""
+item_6/text = ""
+item_7/text = ""
+
+[node name="Profile" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 2
+offset_right = 370.0
+offset_bottom = 84.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ed602")
+text = "-  PROFILE   -
+"
+
+[node name="Deck" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 5.0
+offset_right = 1230.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 75
+text = "------------- Deck -------------"
+
+[node name="Available" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 320.0
+offset_right = 1230.0
+offset_bottom = 403.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 75
+text = "-- Available Cards --"
+
+[node name="Button" type="Button" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 551.0
+offset_right = 377.0
+offset_bottom = 611.0
+text = "Main Menu"
+
+[node name="NameTitle" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 140.0
+offset_right = 235.0
+offset_bottom = 234.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 50
+text = " Name :"
+
+[node name="ProfileName" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 207.0
+offset_right = 365.0
+offset_bottom = 290.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_pbccn")
+text = "test name"
+
+[node name="NameEdit" type="TextEdit" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 321.0
+offset_right = 374.0
+offset_bottom = 373.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_tutkr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xtp5x")
+placeholder_text = "Change name..."
+
+[connection signal="item_activated" from="ProfileGUI/Panel/AvailableCards" to="." method="_on_available_cards_item_activated"]
+[connection signal="item_activated" from="ProfileGUI/Panel/DeckCards" to="." method="_on_deck_cards_item_activated"]
+[connection signal="pressed" from="ProfileGUI/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="text_changed" from="ProfileGUI/Panel/NameEdit" to="." method="_on_name_edit_text_changed"]
+[connection signal="text_set" from="ProfileGUI/Panel/NameEdit" to="." method="_on_text_edit_text_set"]

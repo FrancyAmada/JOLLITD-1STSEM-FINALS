@@ -5,10 +5,14 @@ extends Building
 
 @onready var target = null
 
+var direction: Vector2 = Vector2.ZERO
+
 func _ready():
 	set_healthbar()
 	animation_component.connect("animation_is_finished", _on_animation_finished)
 	particle.emitting = false
+	if summon_id != 1:
+		direction = Vector2.LEFT
 	
 func _physics_process(delta):
 	attack_component.process(delta)
@@ -17,6 +21,9 @@ func _physics_process(delta):
 	set_target()
 	if target != null:
 		detect_target()
+		
+	set_direction()
+	animation_component.update_facing_direction(direction)
 	
 	if on_attack_range and target != null:
 		attack_component.use_attack(target)
@@ -34,3 +41,8 @@ func detect_target():
 	var distance: float = global_position.distance_to(target.global_position)
 	if distance <= attack_range:
 		on_attack_range = true
+
+func set_direction():
+	direction = Vector2.RIGHT
+	if target != null:
+		direction = (target.global_position - global_position).normalized()

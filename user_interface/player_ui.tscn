@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnvrm83f3jean"]
+[gd_scene load_steps=26 format=3 uid="uid://cnvrm83f3jean"]
 
 [ext_resource type="Script" path="res://user_interface/player_ui.gd" id="1_ar28p"]
 [ext_resource type="Texture2D" uid="uid://bvb2ptot5jry5" path="res://assets/Bone.png" id="2_4ue32"]
@@ -8,6 +8,8 @@
 [ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="6_d7ivw"]
 [ext_resource type="Texture2D" uid="uid://ewxr1sqonmf1" path="res://assets/Clouds/Clouds 1/1.png" id="7_vwkx7"]
 [ext_resource type="Theme" uid="uid://b74k3fytsddjd" path="res://user_interface/player_ui_theme.tres" id="8_umkh8"]
+[ext_resource type="Texture2D" uid="uid://j2q2vbxlfm4k" path="res://assets/UI_Pixels/SFX_on.png" id="9_opkr7"]
+[ext_resource type="Texture2D" uid="uid://dwlpjb054xpk3" path="res://assets/UI_Pixels/SFX_off.png" id="10_n5ach"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06sgl"]
 size = Vector2(1266, 445)
@@ -490,9 +492,13 @@ text = "Resume"
 
 [node name="CheckButton" type="CheckButton" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_icons/checked = ExtResource("9_opkr7")
+theme_override_icons/unchecked = ExtResource("10_n5ach")
 button_pressed = true
 text = "SFX"
 alignment = 1
+icon_alignment = 2
+expand_icon = true
 
 [node name="Quit" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd0byf3aqv7pg"]
+[gd_scene load_steps=9 format=3 uid="uid://opv2csi23vf0"]
 
 [ext_resource type="Script" path="res://card/projectiles/fries_bullet.gd" id="1_8pnde"]
 [ext_resource type="Texture2D" uid="uid://dues5stvvtfuu" path="res://assets/tower_projectiles/Fries.png" id="2_tpes1"]

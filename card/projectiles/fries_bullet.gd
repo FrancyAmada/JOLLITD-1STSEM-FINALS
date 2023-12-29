@@ -39,6 +39,7 @@ func hit_target(target_area):
 	if target_area != null:
 		target_area.receive_hit(damage)
 		animation_player.play("Explode")
+		hit_detector.monitoring = false
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Explode":
