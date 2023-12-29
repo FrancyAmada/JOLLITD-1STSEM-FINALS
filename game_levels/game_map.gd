@@ -21,7 +21,7 @@ func _ready():
 	if player1_profile != null:
 		set_player(player1, player1_profile)
 	else:
-		player1_profile = create_new_profile()
+		player1_profile = Global.create_new_profile()
 		set_player(player1, player1_profile)
 	print_debug(player1.profile.saveObject())
 	player1.player_ui.animation_player.connect("animation_finished", _on_animation_finished)
@@ -61,16 +61,6 @@ func get_player1_profile():
 		save_file.close()
 		return loaded_data
 
-func create_new_profile():
-	var beginner_deck: Array = [0, 1, 2, 3, 4, 5, 6, 7]
-	var profile_name = "Administrator"
-	var dict := {
-		"profile": {
-			"name": profile_name,
-			},
-		"deck": beginner_deck
-	}
-	return dict
 
 func _process(delta):
 	if player1.health <= 0:
