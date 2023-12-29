@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=31 format=3 uid="uid://b74k3fytsddjd"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://b74k3fytsddjd"]
 
 [ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="1_ihh3f"]
 
@@ -194,6 +194,32 @@ expand_margin_top = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2skj7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk2r6"]
+bg_color = Color(1, 0.333333, 0.360784, 0.470588)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.913725, 0.760784, 0.737255, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iq4yu"]
+bg_color = Color(1, 0.333333, 0.360784, 0.470588)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.913725, 0.760784, 0.737255, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0jmv"]
 border_width_left = 20
 border_width_top = 20
@@ -244,6 +270,8 @@ CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_amy45")
 CheckButton/styles/normal = SubResource("StyleBoxFlat_qm8y0")
 ItemList/styles/cursor = SubResource("StyleBoxEmpty_f4qfa")
 ItemList/styles/focus = SubResource("StyleBoxEmpty_2skj7")
+ItemList/styles/selected = SubResource("StyleBoxFlat_pk2r6")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_iq4yu")
 TextEdit/colors/font_outline_color = Color(0, 0, 0, 1)
 TextEdit/constants/outline_size = 15
 TextEdit/styles/normal = SubResource("StyleBoxFlat_n0jmv")

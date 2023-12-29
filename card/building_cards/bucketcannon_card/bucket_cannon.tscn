@@ -376,6 +376,7 @@ tree_root = SubResource("AnimationNodeStateMachine_vy4mi")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" parent="." instance=ExtResource("5_oxmji")]
+visible = false
 collision_layer = 64
 collision_mask = 0
 
@@ -384,6 +385,7 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_g1dni")
 
 [node name="TargetDetection" parent="." instance=ExtResource("6_pi3w1")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetection"]
 shape = SubResource("CircleShape2D_mg8nt")
@@ -395,6 +397,8 @@ attack_damage = 80.0
 attack_cd = 1.5
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
+position = Vector2(0, 24.1667)
+scale = Vector2(1.4, 0.382)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_5xvi4")]
 

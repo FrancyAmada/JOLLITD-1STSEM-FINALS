@@ -43,7 +43,7 @@ func detect_target():
 		on_attack_range = true
 		
 func set_direction():
-	direction = Vector2.RIGHT
+	direction = Vector2.RIGHT if summon_id == 1 else Vector2.LEFT
 	if target != null:
 		direction = (target.global_position - global_position).normalized()
 		

@@ -331,9 +331,9 @@ text = "Main Menu"
 [node name="NameTitle" type="Label" parent="ProfileGUI/Panel"]
 layout_mode = 0
 offset_left = 17.0
-offset_top = 140.0
+offset_top = 118.0
 offset_right = 235.0
-offset_bottom = 234.0
+offset_bottom = 212.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/font_size = 50
@@ -342,9 +342,9 @@ text = " Name :"
 [node name="ProfileName" type="Label" parent="ProfileGUI/Panel"]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 207.0
+offset_top = 187.0
 offset_right = 365.0
-offset_bottom = 290.0
+offset_bottom = 270.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 40
@@ -354,14 +354,34 @@ text = "test name"
 [node name="NameEdit" type="TextEdit" parent="ProfileGUI/Panel"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 321.0
+offset_top = 280.0
 offset_right = 374.0
-offset_bottom = 373.0
+offset_bottom = 332.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tutkr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xtp5x")
 placeholder_text = "Change name..."
+
+[node name="HelpLabel" type="Label" parent="ProfileGUI/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 372.0
+offset_right = 416.0
+offset_bottom = 517.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/line_spacing = 7
+theme_override_font_sizes/font_size = 21
+text = "double tap to select a card .
+to change a card on your deck ,
+just select a card on your deck
+and select another card from
+the available cards !"
+vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(1, 0.952941, 0.898039, 1)
 
 [connection signal="item_activated" from="ProfileGUI/Panel/AvailableCards" to="." method="_on_available_cards_item_activated"]
 [connection signal="item_activated" from="ProfileGUI/Panel/DeckCards" to="." method="_on_deck_cards_item_activated"]

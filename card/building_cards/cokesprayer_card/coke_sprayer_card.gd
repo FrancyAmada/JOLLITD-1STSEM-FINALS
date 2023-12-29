@@ -1,6 +1,6 @@
 extends Card
 
-var frieslauncher: PackedScene = preload("res://card/building_cards/frieslauncher_card/fries_launcher.tscn")
+var cokesprayer: PackedScene = preload("res://card/building_cards/cokesprayer_card/coke_sprayer.tscn")
 
 
 func place(place_position: Vector2):
@@ -15,10 +15,10 @@ func place(place_position: Vector2):
 		
 func summon(place_position: Vector2):
 	for i in range(1):
-		var new_frieslauncher = frieslauncher.instantiate()
-		summon_node.add_child(new_frieslauncher)
-		new_frieslauncher.set_summon_id(player_id)
+		var new_cokesprayer = cokesprayer.instantiate()
+		summon_node.add_child(new_cokesprayer)
+		new_cokesprayer.set_summon_id(player_id)
 #		print_debug("Player ID: ", player_id, " Summon:", new_waiter)
-		new_frieslauncher.global_position = place_position
+		new_cokesprayer.global_position = place_position
 		
 

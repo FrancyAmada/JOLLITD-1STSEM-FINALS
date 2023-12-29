@@ -1,6 +1,6 @@
 extends Card
 
-var bucketcannon: PackedScene = preload("res://card/building_cards/burgercannon_card/burger_cannon.tscn")
+var burgercannon: PackedScene = preload("res://card/building_cards/burgercannon_card/burger_cannon.tscn")
 
 
 func place(place_position: Vector2):
@@ -15,10 +15,10 @@ func place(place_position: Vector2):
 		
 func summon(place_position: Vector2):
 	for i in range(1):
-		var new_bucketcannon = bucketcannon.instantiate()
-		summon_node.add_child(new_bucketcannon)
-		new_bucketcannon.set_summon_id(player_id)
+		var new_burgercannon = burgercannon.instantiate()
+		summon_node.add_child(new_burgercannon)
+		new_burgercannon.set_summon_id(player_id)
 #		print_debug("Player ID: ", player_id, " Summon:", new_waiter)
-		new_bucketcannon.global_position = place_position
+		new_burgercannon.global_position = place_position
 		
 

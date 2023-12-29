@@ -15,7 +15,7 @@ extends Node
 	# Towers
 	preload("res://card/building_cards/bucketcannon_card/bucket_cannon_card.tscn"),
 	preload("res://card/building_cards/burgercannon_card/burger_cannon_card.tscn"),
-	
+	preload("res://card/building_cards/cokesprayer_card/coke_sprayer_card.tscn"),
 	preload("res://card/building_cards/frieslauncher_card/fries_launcher_card.tscn"),
 	preload("res://card/building_cards/hotdoglauncher_card/hotdog_launcher_card.tscn")
 ]

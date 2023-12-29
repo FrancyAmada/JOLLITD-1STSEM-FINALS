@@ -398,6 +398,8 @@ attack_damage = 38.0
 attack_cd = 2.0
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
+position = Vector2(0, 18.8333)
+scale = Vector2(1.2, 0.326)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_5xvi4")]
 

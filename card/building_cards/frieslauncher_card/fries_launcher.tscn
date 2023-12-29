@@ -381,6 +381,7 @@ tree_root = SubResource("AnimationNodeStateMachine_vy4mi")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" parent="." instance=ExtResource("5_oxmji")]
+visible = false
 collision_layer = 64
 collision_mask = 0
 
@@ -403,6 +404,8 @@ last_hit_damage = 40.0
 attack_cd = 3.5
 
 [node name="Shadow" parent="." instance=ExtResource("4_7ejcv")]
+position = Vector2(0, 18.1667)
+scale = Vector2(1.7, 0.464)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_5xvi4")]
 
