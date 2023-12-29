@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvum302hy70eg"
+path="res://.godot/imported/Jollibee's_ Phase 2 Certificate Soundtrack (90s Tv music loop).wav-fcb9f847480529cab7b1a0064940d811.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Jollibee's_ Phase 2 Certificate Soundtrack (90s Tv music loop).wav"
+dest_files=["res://.godot/imported/Jollibee's_ Phase 2 Certificate Soundtrack (90s Tv music loop).wav-fcb9f847480529cab7b1a0064940d811.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://capnbgps1m002"]
+[gd_scene load_steps=15 format=3 uid="uid://capnbgps1m002"]
 
 [ext_resource type="Script" path="res://game_levels/game_map.gd" id="1_ju0fv"]
 [ext_resource type="Script" path="res://game_levels/GameArea.gd" id="2_1h6x5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cd2334k0atlms" path="res://tile_map/city_buildings_tilemap.tscn" id="3_0gis4"]
 [ext_resource type="PackedScene" uid="uid://bmqc6d4c3tqt4" path="res://player/player.tscn" id="3_2h0hp"]
 [ext_resource type="Script" path="res://computer_ai/computer_easy.gd" id="6_x68ul"]
+[ext_resource type="AudioStream" uid="uid://fuub0bufwypw" path="res://assets/sounds/Jollibee's Tv 80s Loop Soundtrack.wav" id="7_gocj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjjrb"]
 size = Vector2(3922, 1230.5)
@@ -135,9 +136,17 @@ position = Vector2(1999, 1488)
 shape = SubResource("RectangleShape2D_scr1o")
 debug_color = Color(0.943717, 0.221295, 0.230676, 0.42)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_gocj5")
+autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.917647, 0.831373, 0.772549, 1)
+
 [connection signal="area_entered" from="GameArea" to="GameArea" method="_on_area_entered"]
 [connection signal="area_exited" from="GameArea" to="GameArea" method="_on_area_exited"]
 [connection signal="area_entered" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player1/Area2D" to="Player1" method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="Player2/Area2D" to="Player2" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Player2/Area2D" to="Player2" method="_on_area_2d_area_exited"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

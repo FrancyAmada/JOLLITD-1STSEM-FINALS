@@ -9,9 +9,10 @@ extends AttackComponent
 
 func explode(targets: Array):
 	for hit_box in targets:
-		var distance_to_target: float = global_position.distance_to(hit_box.global_position)
-		if distance_to_target <= 400:
-			deal_damage(hit_box)
+		if hit_box.parent.summon_id != parent.summon_id:
+			var distance_to_target: float = global_position.distance_to(hit_box.global_position)
+			if distance_to_target <= 400:
+				deal_damage(hit_box)
 			
 func deal_damage(hit_box: HitBoxComponent):
 	if hit_box != null:

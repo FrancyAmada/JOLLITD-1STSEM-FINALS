@@ -11,6 +11,7 @@ class_name PlayerUI
 @onready var enemy_name_label: Label = $EnemyName
 @onready var player_health_bar: ProgressBar = $PlayerHealthBar
 @onready var enemy_health_bar: ProgressBar = $EnemyHealthBar
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse

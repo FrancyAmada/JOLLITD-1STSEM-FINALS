@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fuub0bufwypw"
+path="res://.godot/imported/Jollibee's Tv 80s Loop Soundtrack.wav-021c5fbd914a82c56421380067f2d830.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Jollibee's Tv 80s Loop Soundtrack.wav"
+dest_files=["res://.godot/imported/Jollibee's Tv 80s Loop Soundtrack.wav-021c5fbd914a82c56421380067f2d830.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

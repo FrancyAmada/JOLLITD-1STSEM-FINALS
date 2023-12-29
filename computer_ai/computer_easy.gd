@@ -61,8 +61,10 @@ func _physics_process(delta):
 			else:
 				bones += floor(bones_float)
 			bones_float -= floor(bones_float)
-			
-		place_card(get_card())
+		
+		var choice_to_place: int = randi_range(-1, 1)
+		if choice_to_place > 0:
+			place_card(get_card())
 		
 	time_count += delta
 	print(bones)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4noh47geyya3"]
+[gd_scene load_steps=13 format=3 uid="uid://c4noh47geyya3"]
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_6rduv"]
 [ext_resource type="VideoStream" path="res://assets/main_menu/ogv_background.ogv" id="2_gaska"]
 [ext_resource type="Texture2D" uid="uid://bbn7lplbysubv" path="res://assets/main_menu/button.png" id="3_qqfid"]
+[ext_resource type="FontFile" uid="uid://dsd82kr65swbb" path="res://assets/font/ShapeBitRegular-VGZvl.otf" id="4_83xuv"]
+[ext_resource type="AudioStream" uid="uid://dvum302hy70eg" path="res://assets/sounds/Jollibee's_ Phase 2 Certificate Soundtrack (90s Tv music loop).wav" id="5_w6hyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qx3x"]
 size = Vector2(1279, 648)
@@ -64,6 +66,24 @@ _data = {
 "retract": SubResource("Animation_gdkcq")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32x2x"]
+bg_color = Color(1, 0.301961, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 0.270588)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+shadow_size = 1
+shadow_offset = Vector2(-10, 10)
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_6rduv")
 
@@ -93,7 +113,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Area2D2" type="Area2D" parent="."]
 z_index = 4
-position = Vector2(242, 167)
+position = Vector2(242, 218)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 z_index = 3
@@ -117,9 +137,30 @@ offset_top = 121.0
 offset_right = 532.0
 offset_bottom = 194.0
 
+[node name="Label" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 79.0
+offset_right = 1130.0
+offset_bottom = 233.0
+theme_override_colors/font_color = Color(1, 0.921569, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 70
+theme_override_fonts/font = ExtResource("4_83xuv")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxFlat_32x2x")
+text = "Jolly Clash"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_w6hyb")
+autoplay = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(1, 0.933333, 0.905882, 1)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="finished" from="Area2D/CollisionShape2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="input_event" from="Area2D2" to="." method="_on_area_2d_2_input_event"]
 [connection signal="mouse_entered" from="Area2D2" to="." method="_on_area_2d_2_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D2" to="." method="_on_area_2d_2_mouse_exited"]
 [connection signal="pressed" from="Area2D2/Button" to="." method="_on_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

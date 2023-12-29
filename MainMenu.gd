@@ -2,6 +2,8 @@ extends Node2D
 
 var game_map = "res://game_levels/city_map.tscn"
 
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 func _ready():
 	pass
 
@@ -35,3 +37,7 @@ func _on_video_stream_player_finished():
 
 func _on_button_pressed():
 	get_tree().change_scene_to_file(game_map)
+
+
+func _on_audio_stream_player_2d_finished():
+	audio_player.play(0)
