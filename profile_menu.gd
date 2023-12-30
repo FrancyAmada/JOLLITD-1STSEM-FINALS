@@ -8,9 +8,10 @@ var profile_deck: Array[int] = []
 
 @onready var main_menu = "res://main_menu.tscn"
 
+@onready var profile_gui: Control = get_node("ProfileGUI")
 @onready var deck_list: ItemList = get_node("ProfileGUI/Panel/DeckCards")
 @onready var available_list: ItemList = get_node("ProfileGUI/Panel/AvailableCards")
-
+@onready var saving_label: Label = get_node("SavingLabel")
 @onready var profile_name_label: Label = get_node("ProfileGUI/Panel/ProfileName")
 @onready var name_edit: TextEdit = get_node("ProfileGUI/Panel/NameEdit")
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -22,10 +23,12 @@ var available_index_selected: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	saving_label.visible = false
 	profile = Global.player_profile
 	profile_name = profile["profile"]["name"]
 	profile_deck = load_profile_deck()
 	set_profile_name_label()
+	Global.saved_game.connect(return_to_menu)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -49,7 +52,12 @@ func _on_available_cards_item_selected(index):
 func _on_button_pressed():
 	# go to main menu
 	Global.save_profile(profile_name_label.text, profile_deck)
-	await get_tree().create_timer(1).timeout
+	saving_label.visible = true
+	profile_gui.set_process_mode(Node.PROCESS_MODE_DISABLED)
+
+func return_to_menu():
+	await get_tree().create_timer(0.1).timeout
+	profile_gui.set_process_mode(Node.PROCESS_MODE_INHERIT)
 	get_tree().change_scene_to_file(main_menu)
 
 func _on_deck_cards_item_selected(index):
@@ -74,7 +82,6 @@ func load_profile_deck():
 		
 	print(loaded_deck)
 	return loaded_deck
-
 
 func _on_text_edit_text_set():
 	profile_name_label.text = name_edit.text

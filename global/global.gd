@@ -1,5 +1,7 @@
 extends Node
 
+signal saved_game()
+
 # Cards List 
 @onready var available_cards: Array = [
 	# Summons
@@ -61,6 +63,8 @@ func save_profile(profile_name: String, profile_deck: Array):
 	save_file.close() # Close File
 	print_debug("Saved game: Data - ", JSON.stringify(profile_data))
 	
+	player_profile = load_profile()
+	saved_game.emit()
 	
 func create_new_profile():
 	var beginner_deck: Array = [0, 1, 2, 3, 4, 5, 6, 7]
