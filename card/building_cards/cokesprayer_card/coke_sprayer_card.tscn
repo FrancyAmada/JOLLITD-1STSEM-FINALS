@@ -211,6 +211,8 @@ _data = {
 }
 
 [node name="CokeSprayerCard" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_jroqb")
 cost = 6
 
