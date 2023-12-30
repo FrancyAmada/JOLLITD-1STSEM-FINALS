@@ -49,6 +49,7 @@ func _on_available_cards_item_selected(index):
 func _on_button_pressed():
 	# go to main menu
 	Global.save_profile(profile_name_label.text, profile_deck)
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file(main_menu)
 
 func _on_deck_cards_item_selected(index):
