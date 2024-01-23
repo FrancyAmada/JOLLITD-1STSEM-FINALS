@@ -14,6 +14,7 @@ class_name PlayerUI
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var overlay: Sprite2D = $Overlay
 @onready var pause_menu: Control = $PauseMenu
+@onready var sfx_button = $PauseMenu/Panel/VBoxContainer/CheckButton
 
 # Mouse variables
 @onready var mouse_area: Area2D = $Mouse
@@ -33,6 +34,7 @@ var paused: bool = false
 #			card.set_initial_position()
 
 func _ready():
+	sfx_button.set_pressed_no_signal(Global.sound_on)
 	pause_menu.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -152,3 +154,4 @@ func _on_quit_pressed():
 
 func _on_check_button_toggled(button_pressed):
 	player.game_map.audio_player.playing = button_pressed
+	Global.sound_on = button_pressed

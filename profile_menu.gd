@@ -23,6 +23,7 @@ var available_index_selected: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	audio_player.playing = Global.sound_on
 	saving_label.visible = false
 	profile = Global.player_profile
 	profile_name = profile["profile"]["name"]

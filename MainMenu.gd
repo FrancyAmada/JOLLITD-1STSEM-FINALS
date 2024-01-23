@@ -6,13 +6,15 @@ var profile_menu = "res://profile_menu.tscn"
 
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var title_anim_player: AnimationPlayer = get_node("Label/AnimationPlayer")
+@onready var sfx_button = get_node("GUIControl/Panel/HBoxContainer/SFXButton")
 
 @onready var mouse_in = false
 
 
 func _ready():
+	audio_player.playing = Global.sound_on
 	title_anim_player.play("display")
-	
+	sfx_button.button_pressed = Global.sound_on
 
 func _physics_process(delta):
 	pass
@@ -45,8 +47,8 @@ func _on_audio_stream_player_2d_finished():
 
 func _on_sfx_button_toggled(button_pressed):
 	audio_player.playing = button_pressed
+	Global.sound_on = button_pressed
 	
-
 func _on_profile_button_pressed():
 	get_tree().change_scene_to_file(profile_menu)
 

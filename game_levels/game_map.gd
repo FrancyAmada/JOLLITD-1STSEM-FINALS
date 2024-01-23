@@ -16,6 +16,7 @@ var player2_profile = null
 
 
 func _ready():
+	audio_player.playing = Global.sound_on
 	self.name = "GameMap"
 	player1_profile = get_player1_profile()
 	if player1_profile != null:
@@ -25,7 +26,6 @@ func _ready():
 		set_player(player1, player1_profile)
 	print_debug(player1.profile.saveObject())
 	player1.player_ui.animation_player.connect("animation_finished", _on_animation_finished)
-	audio_player.playing = true
 	save_game()
 	
 func set_player(player: Player, player_profile: Dictionary):

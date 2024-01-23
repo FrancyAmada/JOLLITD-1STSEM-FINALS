@@ -2,6 +2,8 @@ extends Node
 
 signal saved_game()
 
+var sound_on: bool = true
+
 # Cards List 
 @onready var available_cards: Array = [
 	# Summons
